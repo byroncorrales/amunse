@@ -1,20 +1,24 @@
 from django.contrib import admin
-from documentos.models import *
+from noticias.models import *
+from django.contrib.contenttypes import generic
+from amunse.multimedia.models import Adjunto #importando el modelo de adjuntos genericos
 
-class CategoriaDocumentoAdmin(admin.ModelAdmin):
+class CategoriaNoticiaAdmin(admin.ModelAdmin):
     list_display = ['nombre']
     list_filter = ['nombre']
 
+class AdjuntoInline(generic.GenericStackedInline):
+    model = Adjunto
+    extra = 1
+    max_num = 3
 
-class SubCategoriaAdmin(admin.ModelAdmin):
-    list_display = ['nombre', 'categoria']
-    list_filter = ['nombre']
-    search_fields = ['nombre']
-    
-class ArchivoAdmin(admin.ModelAdmin):
-    list_display = ['nombre', 'fecha', 'subcategoria','categoria']
-    list_filter = ['nombre', 'subcategoria']
-    search_fields = ['nombre']
+class NoticiaAdmin(admin.ModelAdmin):
+    list_display = ['titulo', 'fecha','categoria']
+    list_filter = ['fecha', 'categoria']
+    search_fields = ['titulo']
+    inlines = [AdjuntoInline,]
+    save_on_top = True
+    date_hierarchy = 'fecha'
     
 #    class Media:
 #        js = ['../archivos/js/autocomplete/jquery.autocomplete.js',
@@ -31,7 +35,5 @@ class ArchivoAdmin(admin.ModelAdmin):
 
 
 
-admin.site.register(CategoriaDocumento, CategoriaDocumentoAdmin)
-admin.site.register(SubCategoriaDocumento, SubCategoriaAdmin)
-admin.site.register(Archivo, ArchivoAdmin)
-
+admin.site.register(CategoriaNoticia, CategoriaNoticiaAdmin)
+admin.site.register(Noticia, NoticiaAdmin)
