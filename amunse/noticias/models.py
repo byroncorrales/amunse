@@ -8,6 +8,10 @@ from tagging.models import Tag
 from tagging_autocomplete.models import TagAutocompleteField
 from amunse.multimedia.models import Adjunto #importando el modelo de adjuntos genericos
 
+# Regla para que funcionen las migraciones de south con los campos de django-tagging
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"]) 
+
 class CategoriaNoticia(models.Model):
     '''Modelo que representa la categorias de las noticias'''
     nombre = models.CharField('Título', max_length = 40, unique = True,blank = True, null = True)
@@ -25,6 +29,7 @@ class Noticia(models.Model):
     titulo = models.CharField('Título', max_length = 120, unique = True,blank = True, null = True)
     slug = models.SlugField(max_length = 50, unique = True,help_text = 'unico Valor',editable=False)
     fecha = models.DateField()
+    autor = models.CharField('Autor', max_length = 100,blank = True, null = True)
     contenido = models.TextField('Contenido',blank = True, null = True)
     categoria = models.ForeignKey(CategoriaNoticia)
     tags =  TagAutocompleteField()

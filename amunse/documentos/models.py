@@ -5,6 +5,11 @@ from tagging.fields import TagField
 from tagging.models import Tag
 from tagging_autocomplete.models import TagAutocompleteField
 
+# Regla para que funcionen las migraciones de south con los campos de django-tagging
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"]) 
+
+
 # modelos para la administracion de archivos 
 
 class CategoriaDocumento(models.Model):
@@ -76,3 +81,4 @@ class Archivo(models.Model):
 
     def get_tags(self, tags):
         return Tag.objects.get_for_object(self)      
+

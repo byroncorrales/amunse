@@ -20,20 +20,9 @@ class NoticiaAdmin(admin.ModelAdmin):
     save_on_top = True
     date_hierarchy = 'fecha'
     
-#    class Media:
-#        js = ['../archivos/js/autocomplete/jquery.autocomplete.js',
-#              '../archivos/js/autocomplete/lib/jquery.bgiframe.min.js',
-#              '../archivos/js/autocomplete/lib/jquery.bgiframe.min.js',
-#              '../archivos/js/autocomplete/lib/jquery.ajaxQueue.js',
-#              '../archivos/js/autocomplete/lib/thickbox-compressed.js',
-#              '../archivos/js/autocomplete/lib/jquery.js']
-#              '../archivos/js/autocomplete/tiny_mce.js',
-              
-#        css = ['../archivos/css/jquery.autocomplete.css',
-#                '../archivos/css/thickbox.css',]
-              
-
-
+    class Media:
+        js = ['../archivos/js/tiny_mce/tiny_mce.js',
+              '../archivos/js/editores/textareas.js']
 
 admin.site.register(CategoriaNoticia, CategoriaNoticiaAdmin)
 admin.site.register(Noticia, NoticiaAdmin)
