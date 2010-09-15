@@ -22,7 +22,8 @@ class NoticiaAdmin(admin.ModelAdmin):
     
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
-              '../archivos/js/editores/textareas.js']
+              '../archivos/js/editores/textareas.js',]
+
 
 admin.site.register(CategoriaNoticia, CategoriaNoticiaAdmin)
 admin.site.register(Noticia, NoticiaAdmin)

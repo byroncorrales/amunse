@@ -6,6 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from tagging.fields import TagField
 from tagging.models import Tag
 from tagging_autocomplete.models import TagAutocompleteField
+from thumbs import ImageWithThumbsField
 from amunse.multimedia.models import Adjunto #importando el modelo de adjuntos genericos
 
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
@@ -26,12 +27,13 @@ class CategoriaNoticia(models.Model):
 
 class Noticia(models.Model):
     '''Modelo que representa el tipo de contenido Noticias'''
-    titulo = models.CharField('Título', max_length = 120, unique = True,blank = True, null = True)
-    slug = models.SlugField(max_length = 50, unique = True,help_text = 'unico Valor',editable=False)
+    titulo = models.CharField('Título', max_length = 120, unique = True,blank = False, null = False)
+    slug = models.SlugField(max_length = 120, unique = True,help_text = 'unico Valor',editable=False)
     fecha = models.DateField()
     autor = models.CharField('Autor', max_length = 100,blank = True, null = True)
-    contenido = models.TextField('Contenido',blank = True, null = True)
     categoria = models.ForeignKey(CategoriaNoticia)
+    imagen = ImageWithThumbsField(upload_to='attachments/imagenes', sizes=((178,90),(255,190)))
+    contenido = models.TextField('Contenido',blank = True, null = True)
     tags =  TagAutocompleteField()
     adjunto = generic.GenericRelation(Adjunto)
 
