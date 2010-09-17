@@ -57,6 +57,7 @@ INSTALLED_APPS = (
     'tagging_autocomplete',
     'noticias',
     'multimedia',
+    'eventos',
 
 )
 
