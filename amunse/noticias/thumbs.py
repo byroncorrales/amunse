@@ -5,7 +5,7 @@ http://django.es
 """
 from django.db.models import ImageField
 from django.db.models.fields.files import ImageFieldFile
-from PIL import Image
+from PIL import Image, ImageOps
 from django.core.files.base import ContentFile
 import cStringIO
 
@@ -49,8 +49,7 @@ def generate_thumb(img, thumb_size, format):
         image2.thumbnail(thumb_size, Image.ANTIALIAS)
     else:
         # not quad
-        image2 = image
-        image2.thumbnail(thumb_size, Image.ANTIALIAS)
+        image2 = ImageOps.fit(image, thumb_size, Image.ANTIALIAS, 0, (0.5, 0.5))
     
     io = cStringIO.StringIO()
     # PNG and GIF are the same, JPG is JPEG
