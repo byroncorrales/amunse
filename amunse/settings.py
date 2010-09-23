@@ -58,6 +58,8 @@ INSTALLED_APPS = (
     'noticias',
     'multimedia',
     'eventos',
+    'videos',
+    'boletines',
 
 )
 

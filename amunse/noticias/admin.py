@@ -24,6 +24,13 @@ class NoticiaAdmin(admin.ModelAdmin):
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
               '../archivos/js/editores/textareas.js',]
 
+class ComentarioAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'fecha','estado','noticia' ]
+    list_filter = ['estado']
+    search_fields = ['nombre']
+    save_on_top = True
+    date_hierarchy = 'fecha'
 
 admin.site.register(CategoriaNoticia, CategoriaNoticiaAdmin)
 admin.site.register(Noticia, NoticiaAdmin)
+admin.site.register(Comentario, ComentarioAdmin)
