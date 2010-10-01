@@ -60,6 +60,10 @@ INSTALLED_APPS = (
     'eventos',
     'videos',
     'boletines',
+    'revistas',
+    'paginas',
+    'municipios',
+    'proyectos',
 
 )
 
