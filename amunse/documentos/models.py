@@ -4,7 +4,7 @@ from django.template.defaultfilters import slugify
 from tagging.fields import TagField
 from tagging.models import Tag
 from tagging_autocomplete.models import TagAutocompleteField
-
+from customfilefield import ContentTypeRestrictedFileField
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
 from south.modelsinspector import add_introspection_rules
 add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"]) 
@@ -50,7 +50,8 @@ class Archivo(models.Model):
     nombre = models.CharField(max_length = 200)
     fecha = models.DateField()
     descripcion = models.TextField(blank = True, null = True)
-    adjunto = models.FileField(upload_to = 'attachments/documentos')
+#    adjunto = models.FileField(upload_to = 'attachments/documentos')
+    adjunto = ContentTypeRestrictedFileField(upload_to = 'attachments/documentos', content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
     subcategoria = models.ForeignKey(SubCategoriaDocumento) 
     slug = models.SlugField(max_length = 25, unique = True, help_text = 'unico Valor',editable=False)
     tags =  TagAutocompleteField()

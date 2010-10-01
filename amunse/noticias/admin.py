@@ -30,6 +30,15 @@ class ComentarioAdmin(admin.ModelAdmin):
     search_fields = ['nombre']
     save_on_top = True
     date_hierarchy = 'fecha'
+    actions = ['publicar','nopublicar']
+
+    def publicar(self, request, queryset):
+        queryset.update(estado=True)
+    publicar.short_description = "Marcar los comentarios como publicados"
+    
+    def nopublicar(self, request, queryset):
+        queryset.update(estado=False)
+    nopublicar.short_description = "Marcar los comentarios como No Publicados"
 
 admin.site.register(CategoriaNoticia, CategoriaNoticiaAdmin)
 admin.site.register(Noticia, NoticiaAdmin)

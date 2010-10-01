@@ -2,7 +2,10 @@
 from django.db import models
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
+from customfilefield import ContentTypeRestrictedFileField
 
+#from south.modelsinspector import add_introspection_rules
+#add_introspection_rules = ([], ["^multimedia\.customfilefield\.ContentTypeRestrictedFileField"]) 
 
 class Adjunto(models.Model):
     '''Modelo Generico para subir archivos adjuntos a diferentes tipos de contenidos'''
@@ -10,7 +13,8 @@ class Adjunto(models.Model):
     object_id = models.IntegerField(db_index=True)
     content_object = generic.GenericForeignKey()
     nombre = models.CharField(max_length = 150)
-    adjunto = models.FileField(upload_to = 'attachments/documentos')
+#    adjunto = models.FileField(upload_to = 'attachments/documentos')
+    adjunto = ContentTypeRestrictedFileField(upload_to = 'attachments/documentos', content_types=['application/pdf', 'application/zip'],max_upload_size=5242880)
 
     def get_absolute_url(self):
         return '%s%s/%s' % (settings.MEDIA_URL, 
