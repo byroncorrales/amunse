@@ -2,7 +2,7 @@
 from django.db import models
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
-from thumbs import ImageWithThumbsField
+
 
 class Adjunto(models.Model):
     '''Modelo Generico para subir archivos adjuntos a diferentes tipos de contenidos'''
@@ -25,14 +25,5 @@ class Adjunto(models.Model):
         verbose_name = "Adjunto"
         verbose_name_plural = "Adjuntos"
         
-class Banner(models.Model):
-    nombre = models.CharField(max_length = 150)
-    imagen = ImageWithThumbsField(upload_to='attachments/imagenes', sizes=((178,90),(255,190)))
 
-    def __unicode__(self):
-        return self.nombre
-
-    class Meta:
-        verbose_name = "Banner"
-        verbose_name_plural = "Banners"
 
