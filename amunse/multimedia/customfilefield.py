@@ -19,25 +19,25 @@ class ContentTypeRestrictedFileField(FileField):
             250MB - 214958080
             500MB - 429916160
     """
-    def __init__(self, *args, **kwargs):
-        self.content_types = kwargs.pop("content_types")
-        self.max_upload_size = kwargs.pop("max_upload_size")
-
-        super(ContentTypeRestrictedFileField, self).__init__(*args, **kwargs)
+    def __init__(self, content_types=None, max_upload_size=None, **kwargs):
+        self.content_types = content_types
+        self.max_upload_size = max_upload_size
+        super(ContentTypeRestrictedFileField, self).__init__(**kwargs)
 
     def clean(self, *args, **kwargs):
         data = super(ContentTypeRestrictedFileField, self).clean(*args, **kwargs)
+        try:  #added this line 
+            file = data.file
+            content_type = file.content_type
+            if content_type in self.content_types:
+                if file._size > self.max_upload_size:
+                    raise forms.ValidationError(_('El Archivo debe ser menor a  %s. El archivo actual es de %s') % (filesizeformat(self.max_upload_size), filesizeformat(file._size)))
+            else:
+                raise forms.ValidationError(_('Este tipo de archivo no es soportado'))
 
-        file = data.file
-        content_type = file.content_type
+            return data
+        except:  # added this line
+            return data #and this
 
-        if content_type in self.content_types:
-            if file._size > self.max_upload_size:
-                raise forms.ValidationError(_('Please keep filesize under %s. Current filesize %s') % (filesizeformat(self.max_upload_size), filesizeformat(file._size)))
-        else:
-            raise forms.ValidationError(_('Filetype not supported.'))
-
-        return data
-
-#from south.modelsinspector import add_introspection_rules
-#add_introspection_rules([], ["^multimedia\.customfilefield\.ContentTypeRestrictedFileField"])
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([], ["^amunse\.multimedia\.customfilefield\.ContentTypeRestrictedFileField"])

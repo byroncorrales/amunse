@@ -19,8 +19,9 @@ class Boletin(models.Model):
     fecha = models.DateField('Fecha',blank = False, null = False)
     imagen = ImageWithThumbsField('Imagen portada',upload_to='attachments/imagenes', sizes=((80,100),(190,230)), help_text="Imágen de portada")
     boletin = models.FileField('Boletín Adjunto',upload_to = 'attachments/boletines')
+    edicion = models.IntegerField('Número de edición',blank = True, null = True)
     descripcion = models.TextField('Descripción',blank = True, null = True)
-    tags =  TagAutocompleteField()
+    tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 
     def __unicode__(self):
         return self.titulo

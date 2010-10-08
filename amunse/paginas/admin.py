@@ -12,7 +12,7 @@ class PaginaAdmin(admin.ModelAdmin):
     list_display = ['titulo','fecha']
     list_filter = ['fecha']
     search_fields = ['titulo']
-    inlines = [AdjuntoInline,]
+#    inlines = [AdjuntoInline,]
     save_on_top = True
     date_hierarchy = 'fecha'
 
@@ -23,12 +23,10 @@ class PaginaAdmin(admin.ModelAdmin):
 class MenuPrimarioAdmin(admin.ModelAdmin):
     list_display = ['titulo', 'orden']
     search_fields = ['titulo']
-    save_on_top = True
 
 class MenuSecundarioAdmin(admin.ModelAdmin):
     list_display = ['titulo','menuprimario', 'orden','pagina','url']
     search_fields = ['titulo']
-    save_on_top = True
     list_filter = ['menuprimario']
 
 admin.site.register(Pagina, PaginaAdmin)

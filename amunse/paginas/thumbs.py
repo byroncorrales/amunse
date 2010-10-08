@@ -164,4 +164,4 @@ class ImageWithThumbsField(ImageField):
 from south.modelsinspector import add_introspection_rules
 #add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"]) 
 # era la mia add_introspection_rules = ([], ["\.thumbs\.ImageWithThumbsField"]) 
-add_introspection_rules([], ["^banners\.thumbs\.ImageWithThumbsField"])
+add_introspection_rules([], ["^paginas\.thumbs\.ImageWithThumbsField"])

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{%block title%}AMUNSE{%endblock%}</title>
+    <link href="{{MEDIA_URL}}css/estilo.css" rel="stylesheet" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.4.2.min.js"></script>
+	{%block extra_header%}{%endblock%}
+</head>
+<script type="text/javascript">
+$(document).ready(function(){
+    lastBlock = $('#a8');
+    maxWidth = 418;
+    minWidth = 134;
+    $("#acordion ul li div").click(
+      function(){
+        $(lastBlock).animate({width: minWidth+"px"}, { queue:false, duration:400 });
+		$(this).animate({width: maxWidth+"px"}, { queue:false, duration:400});
+		lastBlock = this;
+	  }
+    );
+});
+</script>
+<body>
+  <!-- Comienza el header -->
+  <div id="barra_superior" >
+    <div id="contenedor_barra_superior" class="centro">
+        <a href="/"><img src="{{MEDIA_URL}}/imagen/titulo.jpg"></a>
+        <form action="#" method="post">
+            <div>
+                 <input type="text" name="name" id="busqueda" value=""/>
+            </div>
+        </form>
+    </div>
+  </div>
+  <div id="acordion" class="centro">
+        <ul>        
+          {%for menu_primario in menu_primario%}
+          <li>
+            {% if forloop.first %}
+            <div id="a8" class="welcome" style="background:url({{menu_primario.imagen.url}});">
+            {% else %}
+            <div id="a1" class="a1" style="{%if menu_primario.imagen%}background:url({{menu_primario.imagen.url}});{%endif%}">
+            {% endif %}
+               <p class="zona_title">
+                    {{menu_primario.titulo}}
+               </p>
+               <p class="h">
+                 {%for menu_secundario in menu_secundario%}
+                      {% if menu_secundario.menuprimario.id == menu_primario.id %}
+                      <a href="{%if menu_secundario.pagina%}/paginas/{{menu_secundario.pagina.slug}}{%else%}{{menu_secundario.url}}{%endif%}">{{menu_secundario.titulo}}</a>
+                      {%endif%}
+                 {%endfor%}
+               </p>
+            </div>
+          </li>
+          {%endfor%}
+        </ul>
+  </div>
+  <div id="contenedor" class="centro">
+     <div id="contenido_izq" class="izq">
+     {%block contenido%}
+     
+     {% endblock %}
+     </div>
+     <div id="municipios" class="der">
+         {%for municipio in municipio%}
+            <a href="/municipios/{{municipio.slug}}">{{municipio.nombre}}</a>
+         {%endfor%}
+     </div>
+     <div class="separador"></div>
+  </div>
+  <div id ="final_contenedor" class="centro"></div>
+  <div id="footer">
+    <div id="footer_contenedor" class="centro">
+        <img src="{{MEDIA_URL}}/imagen/hoja.png"><b>AMUNSE</b> Asociación de Municipios de Nueva Segovia | Desarrollado por SIMAS bajo plataforma Drupal
+    </div>
+  </div>
+</body>
+</html>

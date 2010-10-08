@@ -1,0 +1,296 @@
+/* Reseteando CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p,
+blockquote, pre, a, abbr, acronym, address, big,
+cite, code, del, dfn, em, font, img,
+ins, kbd, q, s, samp, small, strike,
+strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+center, u, b, i {
+     margin: 0;
+     padding: 0;
+     border: 0;
+     outline: 0;
+     font-weight: normal;
+     font-style: normal;
+     font-size: 100%;
+     font-family: inherit;
+     vertical-align: baseline
+}
+
+body {
+     line-height: 1;
+     font-family: Arial, Helvetica, sans-serif;
+     background:#f7f7dc url(../imagen/fondo.jpg);
+     background-repeat:no-repeat;
+     background-position: center top;
+}
+
+:focus {
+     outline: 0
+}
+
+ol, ul {
+     list-style: none
+}
+
+table {
+     border-collapse: collapse;
+     border-spacing: 0
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+     content: ""
+}
+
+blockquote, q {
+     quotes: "" ""
+}
+
+input, textarea {
+     margin: 0;
+     padding: 0
+}
+
+hr {
+     margin: 0;
+     padding: 0;
+     border: 0;
+     color: #000;
+     background-color: #000;
+     height: 1px
+}
+
+b{
+    font-weight:bold;
+}
+
+/* Termina Reseteando CSS */
+
+
+/* Generales */
+
+.der{
+  float:right;
+}
+
+.izq{
+  float:left;
+}
+.centro{
+  margin: 0pt auto;
+  padding:0pt;
+ 
+}
+.separador{
+  clear:both;
+}
+
+/* Encabezado */
+
+#barra_superior{
+    background:#34342e;
+    height:42px;
+    border-bottom:#a3a3a3 1px solid;
+}
+
+#contenedor_barra_superior{
+     height:42px;
+     width:960px;
+}
+
+#contenedor_barra_superior img{
+     margin-top:8px;
+     float:left;
+}
+
+#acordion{
+    width:960px;
+    height:170px;
+}
+
+#acordion{
+    background: #91c45f;
+
+}
+#acordion ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+#acordion ul li{
+    float: left;
+    display: inline-block;
+}
+#acordion ul li div{
+    display: block;
+    overflow: hidden;
+    height: 160px;
+    width: 134px;
+    color: #fff;
+  box-shadow: -2px -1px 12px #202020;
+  -moz-box-shadow: -2px -1px 12px #202020;
+  -khtml-box-shadow: -2px -1px 12px #202020;
+  -webkit-box-shadow: -2px -1px 12px #000;	
+  border-left:#A9A9A9 1px solid;
+}
+#acordion ul li div.welcome{
+    width: 418px;
+}
+#acordion ul li img{
+    position: absolute;
+    margin-left: 8px;
+    cursor: pointer;
+}
+#acordion ul li p{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    margin-top: 0px;
+    display: block;
+    cursor: default;
+}
+#acordion ul li p.h{
+    font-size: 12px;
+    width:420px;
+    text-align: right;
+    margin-top: 0px;
+    display: block;
+    cursor: default;
+
+}
+#acordion .zona_title{
+    font-size: 16px;
+    background:url(../imagen/fondo_menu_titulo.png);
+    height:20px;
+    font-weight:bold;
+    text-shadow: 0px 0px 5px #151615;
+    -moz-text-shadow: 0px 0px 5px #151615;
+    -webkit-text-shadow: 0px 0px 5px #151615;
+    color:#fff;
+    padding-left:5px;
+    padding-top:5px;
+    margin-bottom:2px;
+}
+#acordion ul li div.welcome{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+#acordion ul li div.a1{
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+#acordion a, #acordion a:visited{
+    color:#fff;
+    font-weight:bold;
+    text-decoration:none;
+    display:block;
+    height:22px;
+    width:140px;
+    background:url(../imagen/fondo_subenlace.png);
+    background-position:left bottom;
+    margin-left:270px;
+    padding-top:7px;
+    padding-right:10px;
+    margin-bottom:5px;
+    text-align: right;
+}
+
+#acordion a:hover{
+    background:url(../imagen/fondo_subenlace.png);
+    background-position:left top;
+}
+
+#busqueda{
+    float:right;
+    margin-top:9px;
+    padding-left:30px;
+    height:24px;
+    width:170px;
+    *width:200px;
+    border:0;
+    background-image:url(../imagen/buscar.png);
+    color:#525252;
+}
+
+/* Termina Encabezado */
+
+/* Comienza Contenido*/
+
+#contenedor{
+    width:940px;
+    background:url(../imagen/fondo_repetido.png);
+    background-repeat:repeat-y;
+    padding-left:30px;
+    padding-right:30px;
+    padding-top:15px;
+}
+
+#final_contenedor{
+    width:1000px;
+    background:url(../imagen/fondo_repetido_final.png);
+    background-repeat:repeat-y;
+    height:132px;
+}
+
+#municipios{
+    width:195px;
+    height:600px;
+    background:url(../imagen/municipios.jpg);
+    background-repeat:no-repeat;
+    padding-top:37px;
+
+}
+
+#municipios a, #municipios a:visited{
+    display:block;
+    width:165px;
+    height:30px;
+margin-left:15px;
+background:#ccc;
+
+}
+/* Termina Contenido*/
+
+/* Comienza Footer */
+
+#footer{
+    color:#fff;
+    height:45px;
+    background:url(../imagen/footer.png);
+    background-repeat:repeat-x;
+}
+
+#footer_contenedor{
+    padding-top:15px;
+    font-size:12px;
+    height:30px;
+    width:620px;
+    text-align:center;
+}
+
+#footer_contenedor img{
+    float:left;
+    margin-right:10px;
+    margin-top:-12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
