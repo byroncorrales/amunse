@@ -1,3 +1,4 @@
+{%load cache%}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -33,6 +34,7 @@ $(document).ready(function(){
         </form>
     </div>
   </div>
+  {%cache 900 menu%}
   <div id="acordion" class="centro">
         <ul>        
           {%for menu_primario in menu_primario%}
@@ -57,23 +59,26 @@ $(document).ready(function(){
           {%endfor%}
         </ul>
   </div>
+  {%endcache%}
   <div id="contenedor" class="centro">
      <div id="contenido_izq" class="izq">
      {%block contenido%}
      
      {% endblock %}
      </div>
+  {%cache 900 sidebar%}
      <div id="municipios" class="der">
          {%for municipio in municipio%}
             <a href="/municipios/{{municipio.slug}}">{{municipio.nombre}}</a>
          {%endfor%}
      </div>
+   {%endcache%}
      <div class="separador"></div>
   </div>
   <div id ="final_contenedor" class="centro"></div>
   <div id="footer">
     <div id="footer_contenedor" class="centro">
-        <img src="{{MEDIA_URL}}/imagen/hoja.png"><b>AMUNSE</b> Asociación de Municipios de Nueva Segovia | Desarrollado por SIMAS bajo plataforma Drupal
+        <img src="{{MEDIA_URL}}/imagen/hoja.png"><b>AMUNSE</b> Asociación de Municipios de Nueva Segovia | Desarrollado por SIMAS bajo plataforma Django 
     </div>
   </div>
 </body>
