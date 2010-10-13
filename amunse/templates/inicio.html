@@ -30,7 +30,9 @@
         </div>
         <div class="bloque_inicio">
             <h2>Próximos Eventos</h2>
-            <a id="enlace_estemes" href="#">Este mes</a> <a id="enlace_proximomes" href="#" class="con_flechita">Próximo mes </a> <a href="/eventos" class="con_flechita">Todos los eventos</a> 
+            <div class="enlaces_inicio">
+                <a id="enlace_estemes" href="#">Este mes</a> <a id="enlace_proximomes" href="#" class="con_flechita">Próximo mes </a> <a href="/eventos" class="con_flechita">Todos los eventos</a> 
+            </div>
             <div id="estemes">
                 <div class="separador"></div><br>
                 {%for eventos in eventos%}
@@ -58,7 +60,8 @@
             <p>{{noticia.contenido|truncatewords_html:15|safe}}</p>
         </div>
         {%endfor%}
-        <a id="enlace_noticias" href="/noticias">Todas las noticias</a>
-        
+        <div class="enlaces_inicio">
+            <a class="con_flechita" href="/noticias">Todas las noticias</a>
+        </div>
     </div>
  {% endblock %}
