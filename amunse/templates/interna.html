@@ -1,0 +1,13 @@
+ {%extends "base.html"%}
+ {%block extra_header%}
+ {%endblock%}
+ {%block contenido%}
+    <div id="sidebar" class="izq">
+Izquierda
+    </div>
+    <div id="cuerpo" class="der">
+    {%block cuerpo%}
+derecha
+    {%endblock %}
+    </div>
+ {% endblock %}
