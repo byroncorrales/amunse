@@ -3,11 +3,25 @@
  {%endblock%}
  {%block contenido%}
     <div id="sidebar" class="izq">
-Izquierda
+        <div id= "menu_sidebar">
+                <h2>Actualidad</h2>
+                <a href="">Noticias</a>
+                <a href="">Eventos</a>
+                <a href="">Boletines</a>
+                <a href="">Revistas</a>
+                <a href="">Videos</a>
+        </div>
+        <div id="contacto_sidebar">
+                <h2>Contáctenos</h2>
+                    Telefonos : #######
+                    email: ejemplo@algo.com
+                    Nueva Segovia
+                    Nicaragua
+        </div>
     </div>
     <div id="cuerpo" class="der">
     {%block cuerpo%}
-derecha
     {%endblock %}
     </div>
+    <div class="separador"></div>
  {% endblock %}

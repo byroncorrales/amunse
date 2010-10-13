@@ -240,6 +240,10 @@ b{
     height:132px;
 }
 
+#contenido_izq{
+    width:740px;
+}
+
 #municipios{
     width:195px;
     height:400px;
@@ -391,6 +395,18 @@ b{
 
 .titulo_evento a:hover{
     color:#000;
+}
+
+/* Contenido interno*/
+
+#sidebar{
+    width:150px;
+    background:#ccc;
+}
+
+#cuerpo{
+    width:580px;
+    background:red;
 }
 
 

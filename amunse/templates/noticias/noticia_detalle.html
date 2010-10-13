@@ -3,7 +3,8 @@
  {%endblock%}
 
     {%block cuerpo%}
-        {{noticia.titulo}}
+        <h2>{{noticia.titulo}}</h2>
+        {{noticia.contenido|safe}}
     {%endblock %}
 
  
