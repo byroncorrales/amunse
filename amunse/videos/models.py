@@ -18,7 +18,7 @@ class Video(models.Model):
     fecha = models.DateField('Fecha',blank = False, null = False)
     video = models.URLField('Url del Video',verify_exists=True,blank = False, null = False, help_text='ej: http://www.youtube.com/watch?v=F5WLEu4UIds')
     descripcion = models.TextField('Descripción',blank = True, null = True)
-    tags =  TagAutocompleteField()
+    tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 
     def __unicode__(self):
         return self.titulo

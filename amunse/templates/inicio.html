@@ -1,5 +1,64 @@
  {%extends "base.html"%}
+ {%block extra_header%}
+<script type="text/javascript"> 
+    $(document).ready(function() {
+    $("#estemes").show();
+    $("#proximomes").hide();
+    $("#enlace_estemes").click(function(){
+        $("#estemes").show();
+        $("#proximomes").hide();
+        return false;
+    });
+    
+    $("#enlace_proximomes").click(function(){
+        $("#estemes").hide();
+        $("#proximomes").show();
+        return false;
+    });
  
+    });
+</script> 
+ {%endblock%}
+
  {%block contenido%}
-<p>sdfasdfs</p><p>sdfasdfs</p><p>sdfasdfs</p><p>sdfasdfs</p><p>sdfasdfs</p>
+    <div id="inicio_izq" class="izq">
+        <div class="bloque_inicio">
+            <h2>AMUNSE</h2>
+            <img src="{{MEDIA_URL}}/imagen/logo_index.jpg" align="left"><p>NUEVA SEGOVIA, ocupa el extremo noroeste del país, limitando al sur con el departamento de Madriz; al este con el de Jinotega y al oeste y norte con la República de Honduras, de la cual la separa, como frontera natural, la sierra de Dipilto y Jalapa.</p><p>
+
+ El Departamento de Nueva Segovia fue creado en 1858; comprendía entonces Estelí, Madriz y la extensa comarca de Bocay, a través de sucesivas</p>
+        </div>
+        <div class="bloque_inicio">
+            <h2>Próximos Eventos</h2>
+            <a id="enlace_estemes" href="#">Este mes</a> <a id="enlace_proximomes" href="#" class="con_flechita">Próximo mes </a> <a href="/eventos" class="con_flechita">Todos los eventos</a> 
+            <div id="estemes">
+                <div class="separador"></div><br>
+                {%for eventos in eventos%}
+                <div class="fecha_evento">{{eventos.fecha_inicio|date:"d M"}}</div>
+                <div class="titulo_evento"><a href="/eventos/{{eventos.slug}}">{{eventos.titulo}}</a></div>
+                <div class="separador"></div><br>
+                {%endfor%}
+            </div>
+            <div id="proximomes">
+                <div class="separador"></div><br>
+                {%for eventos_prox in eventos_prox%}
+                <div class="fecha_evento">{{eventos_prox.fecha_inicio|date:"d M"}}</div>
+                <div class="titulo_evento"><a href="/eventos/{{eventos_prox.slug}}">{{eventos_prox.titulo}}</a></div>
+                <div class="separador"></div><br>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    <div id="inicio_der" class="der">
+        <h2>Noticias</h2>
+        {% for noticia in noticia %}
+        <div class="contenedor_noticia_inicio">
+            <img src="{{noticia.imagen.url_178x90}}">
+            <a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a>
+            <p>{{noticia.contenido|truncatewords_html:15|safe}}</p>
+        </div>
+        {%endfor%}
+        <a id="enlace_noticias" href="/noticias">Todas las noticias</a>
+        
+    </div>
  {% endblock %}

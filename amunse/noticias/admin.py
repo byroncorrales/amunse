@@ -14,7 +14,7 @@ class AdjuntoInline(generic.GenericStackedInline):
 
 class NoticiaAdmin(admin.ModelAdmin):
     list_display = ['titulo', 'fecha','categoria']
-    list_filter = ['fecha', 'categoria']
+    list_filter = ['categoria']
     search_fields = ['titulo']
     inlines = [AdjuntoInline,]
     save_on_top = True

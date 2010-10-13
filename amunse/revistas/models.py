@@ -21,7 +21,7 @@ class Revista(models.Model):
     imagen = ImageWithThumbsField('Imagen portada',upload_to='attachments/imagenes', sizes=((80,100),(190,230)), help_text="Imágen de portada")
     boletin = models.FileField('Revista Adjunto',upload_to = 'attachments/revistas')
     descripcion = models.TextField('Descripción',blank = True, null = True)
-    tags =  TagAutocompleteField()
+    tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 
     def __unicode__(self):
         return self.titulo

@@ -64,7 +64,6 @@ INSTALLED_APPS = (
     'paginas',
     'municipios',
     'proyectos',
-    'banners',
 
 )
 

@@ -54,7 +54,7 @@ class Archivo(models.Model):
     adjunto = ContentTypeRestrictedFileField(upload_to = 'attachments/documentos', content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
     subcategoria = models.ForeignKey(SubCategoriaDocumento) 
     slug = models.SlugField(max_length = 25, unique = True, help_text = 'unico Valor',editable=False)
-    tags =  TagAutocompleteField()
+    tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 
     def get_absolute_url(self):
         return '%s%s/%s' % (settings.MEDIA_URL, 

@@ -32,17 +32,18 @@ class ContentTypeRestrictedFileField(FileField):
 
     def clean(self, *args, **kwargs):
         data = super(ContentTypeRestrictedFileField, self).clean(*args, **kwargs)
+        try:  #added this line 
+            file = data.file
+            content_type = file.content_type
+            if content_type in self.content_types:
+                if file._size > self.max_upload_size:
+                    raise forms.ValidationError(_('El Archivo debe ser menor a  %s. El archivo actual es de %s') % (filesizeformat(self.max_upload_size), filesizeformat(file._size)))
+            else:
+                raise forms.ValidationError(_('Este tipo de archivo no es soportado'))
 
-        file = data.file
-        content_type = file.content_type
-
-        if content_type in self.content_types:
-            if file._size > self.max_upload_size:
-                raise forms.ValidationError(_('El Archivo debe ser menor a  %s. El archivo actual es de %s') % (filesizeformat(self.max_upload_size), filesizeformat(file._size)))
-        else:
-            raise forms.ValidationError(_('Este tipo de archivo no es soportado'))
-
-        return data
+            return data
+        except:  # added this line
+            return data #and this
 
 from south.modelsinspector import add_introspection_rules
 add_introspection_rules([], ["^documentos\.customfilefield\.ContentTypeRestrictedFileField"])

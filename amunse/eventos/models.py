@@ -20,7 +20,7 @@ class Evento(models.Model):
     fecha_final = models.DateField('Fecha Final',blank = False, null = False)
     Lugar = models.CharField('Lugar', max_length = 150,blank = True, null = True)
     contenido = models.TextField('Contenido',blank = True, null = True)
-    tags =  TagAutocompleteField()
+    tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
     adjunto = generic.GenericRelation(Adjunto)
 
     def __unicode__(self):

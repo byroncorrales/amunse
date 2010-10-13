@@ -21,9 +21,14 @@ class CategoriaNoticia(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    def save(self, force_insert=False, force_update=False):
+        self.slug = slugify(self.nombre)
+        super(CategoriaNoticia, self).save(force_insert, force_update)
+
     class Meta:
         verbose_name = "Categoria de Noticia"
         verbose_name_plural = "Categorias de Noticias"
+
 
 class Noticia(models.Model):
     '''Modelo que representa el tipo de contenido Noticias'''
@@ -34,7 +39,7 @@ class Noticia(models.Model):
     categoria = models.ForeignKey(CategoriaNoticia)
     imagen = ImageWithThumbsField(upload_to='attachments/imagenes', sizes=((178,90),(255,190)))
     contenido = models.TextField('Contenido',blank = True, null = True)
-    tags =  TagAutocompleteField()
+    tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
     adjunto = generic.GenericRelation(Adjunto)
 
     def __unicode__(self):
@@ -54,7 +59,10 @@ class Noticia(models.Model):
         Tag.objects.update_tags(self, tags)
 
     def get_tags(self, tags):
-        return Tag.objects.get_for_object(self)  
+        return Tag.objects.get_for_object(self)
+    
+#    def categorias(self):
+#        return self.Noticia.all()[0].categoria.nombre
 
 class Comentario(models.Model):
     '''Modelo que representa los comentarios de las noticias'''
