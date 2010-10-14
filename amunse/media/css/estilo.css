@@ -250,7 +250,7 @@ b{
     background:url(../imagen/municipios.jpg);
     background-repeat:no-repeat;
     padding-top:37px;
-
+    margin-top:-8px;
 }
 
 #municipios a, #municipios a:visited{
@@ -295,11 +295,15 @@ b{
     margin-bottom:5px;
 }
 
-.contenedor_noticia_inicio a{
+.contenedor_noticia_inicio a, .contenedor_noticia_inicio a:visited{
     font-size:16px;
     font-weight:bold;
     color:#698c45;
     text-decoration:none;
+}
+
+.contenedor_noticia_inicio a:hover{
+    color:#576B43;
 }
 
 .contenedor_noticia_inicio p{
@@ -391,6 +395,7 @@ b{
     border:0;
     font-size:13px;
     font-weight:bold;
+    float:left;
 }
 
 .titulo_evento a:hover{
@@ -414,6 +419,9 @@ b{
     font-weight:bold;
     padding:5px;
     padding-left:40px;
+    text-shadow: 0px 1px 2px #000;
+    -moz-text-shadow: 0px 1px 2px #000;
+    -webkit-text-shadow: 0px 1px 2px #000;
 
 }
 
@@ -426,6 +434,9 @@ b{
     font-size:14px;
     padding-top:10px;
     padding-left:15px;
+    text-shadow: 0px -1px 0px #37461c;
+    -moz-text-shadow: 0px -1px 0px #37461c;
+    -webkit-text-shadow: 0px -1px 0px #37461c;
 }
 
 #menu_sidebar a:hover{
@@ -439,6 +450,31 @@ b{
     margin-left:10px;
 }
 
+#contacto_sidebar{
+    background:#8abc59;
+    margin-top:10px;
+    color:#f7f7f6;
+    font-size:13px;
+}
+
+#contacto_sidebar p{
+padding:5px;
+}
+
+#contacto_sidebar h2{
+    background:#68953c url(../imagen/cuadrito_v.png);
+    background-repeat:no-repeat;
+    color:#fff;
+    font-weight:bold;
+    font-size:16px;
+    padding:5px;
+    padding-left:40px;
+    border-bottom:#b8d69b 1px solid;
+    text-shadow: 0px 1px 2px #2e3436;
+    -moz-text-shadow: 0px 1px 2px #2e3436;
+    -webkit-text-shadow: 0px 1px 2px #2e3436;
+}
+
 #cuerpo{
     width:580px;
     font-size:13px;
@@ -447,17 +483,37 @@ b{
 }
 
 #cuerpo h2{
-    background:#f6f6d9;
+    background:#f2f2c7 url(../imagen/vineta_titulo.png);
+    background-repeat:no-repeat;
+    background-position:center left;
     color:#555753;
     font-size:16px;
     font-weight:bold;
-    padding-left :20px;
-    padding-top:5px;
+    padding-left :35px;
+    padding-top:10px;
     padding-bottom:5px;
     margin-bottom:5px;
 }
 
+#detalles_noticia{
+    width:267px;
+    margin-left:10px;
 
+}
+
+#detalles_noticia img{
+    background:#eeeeb9;
+    padding:6px;
+}
+
+#autor_noticia{
+    background:#fff url(../imagen/autor_noticia.png);
+    background-repeat:repeat-x;
+    background-position:bottom left;
+    border: #f2f2db 1px solid;
+    padding:8px;
+    margin-bottom:5px;
+}
 
 
 /* Termina Contenido*/

@@ -4,6 +4,16 @@
 
     {%block cuerpo%}
         <h2>{{noticia.titulo}}</h2>
+        
+        <div id="detalles_noticia" class="der">
+            <div id="autor_noticia">
+                <b>Autor: </b>{{noticia.autor}}<br>
+                <b>Fecha: </b>{{noticia.fecha|date:"n M Y"}}<br>
+                {% if noticia.tags %}<b>Etiquetas: </b>{{noticia.tags}}{%endif%}
+            </div>
+            <img src="{{noticia.imagen.url_255x190}}">
+            
+        </div>
         {{noticia.contenido|safe}}
     {%endblock %}
 
