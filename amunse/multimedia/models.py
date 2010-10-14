@@ -14,7 +14,7 @@ class Adjunto(models.Model):
     content_object = generic.GenericForeignKey()
     nombre = models.CharField(max_length = 150)
 #    adjunto = models.FileField(upload_to = 'attachments/documentos')
-    adjunto = ContentTypeRestrictedFileField(upload_to = 'attachments/documentos', content_types=['application/pdf', 'application/zip', 'image/jpeg'], max_upload_size=5242880)
+    adjunto = ContentTypeRestrictedFileField(upload_to = 'attachments/documentos', content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
 
     def get_absolute_url(self):
         return '%s%s/%s' % (settings.MEDIA_URL, 
