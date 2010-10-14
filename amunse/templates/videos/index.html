@@ -1,0 +1,16 @@
+ {%extends "interna.html"%}
+ {%load youthumb%}
+ {%block extra_header%}
+ {%endblock%}
+
+    {%block cuerpo%}
+         {% for video in videos.object_list%}
+         <div id="video-{{video.id}}">
+         <h1>{{video.titulo}}</h1>
+         {{video.descripcion}}
+         <a href="/videos/popup/{{video.id}}/"><img id='video-{{video.id}}' class='ythumb' src="{{video.video|youthumbnail:'s'}}"/></a>
+         </div>
+         {%endfor%}
+    {%endblock %}
+
+ 
