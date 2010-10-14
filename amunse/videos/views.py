@@ -23,4 +23,9 @@ def index(request):
 
     return render_to_response('videos/index.html', {'videos': videos},
                               context_instance = RequestContext(request))
-            
+
+def video_popup(request, id):
+    '''vista para el pocup del video'''
+    video = get_object_or_404(Video, id=id)
+    return render_to_response('videos/video_popup.html', {'video': video},
+                              context_instance = RequestContext(request))
