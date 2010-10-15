@@ -18,7 +18,7 @@ class Evento(models.Model):
     slug = models.SlugField(max_length = 120, unique = True,help_text = 'unico Valor',editable=False)
     fecha_inicio = models.DateField('Fecha de Inicio',blank = False, null = False)
     fecha_final = models.DateField('Fecha Final',blank = False, null = False)
-    Lugar = models.CharField('Lugar', max_length = 150,blank = True, null = True)
+    lugar = models.CharField('Lugar', max_length = 150,blank = True, null = True)
     contenido = models.TextField('Contenido',blank = True, null = True)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
     adjunto = generic.GenericRelation(Adjunto)

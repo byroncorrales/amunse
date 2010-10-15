@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     (r'^', include('paginas.urls')),
     (r'^', include('noticias.urls')),
     (r'^videos/', include('videos.urls')),
+    (r'^eventos/', include('eventos.urls')),
     (r'^$', 'paginas.views.inicio'),
     # Uncomment the next line to enable the admin:
      (r'^admin/', include(admin.site.urls)),

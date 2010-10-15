@@ -1,0 +1,18 @@
+{%extends "interna.html"%}
+{%block extra_header%}
+{%endblock%}
+{%block cuerpo%}
+    <h2>{{evento.titulo}}</h2>
+       
+       <div id="lista">
+           <div id="elemento_lista">
+               {{evento.fecha_inicio}}<br>
+               {{evento.fecha_final}}<br>
+               {{evento.lugar}}<br>
+               {{evento.contenido|safe}}<br>
+                   <hr>
+           </div>
+       </div>
+{%endblock %}
+
+ 
