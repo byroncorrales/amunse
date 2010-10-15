@@ -18,4 +18,4 @@ def noticia_lista(request):
     noticia = Noticia.objects.all().order_by('-fecha','-id')
     dicc = {'noticia': noticia,
            }
-    return direct_to_template(request, 'noticias/noticia_lista.html',dicc)
+    return direct_to_template(request, 'noticias/noticias_lista.html',dicc)

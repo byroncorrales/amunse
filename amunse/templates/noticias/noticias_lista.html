@@ -3,15 +3,17 @@
  {%endblock%}
 
     {%block cuerpo%}
-        <h2>{{noticia.titulo}}</h2>
+        <h2>Noticias</h2>
         
-        <div id="detalles_noticia" class="der">
-            <div id="autor_noticia">
-                <b>Autor: </b>{{noticia.autor}}<br>
-                <b>Fecha: </b>{{noticia.fecha|date:"n M Y"}}<br>
-                {% if noticia.tags %}<b>Etiquetas: </b>{{noticia.tags}}{%endif%}
+        <div id="lista">
+            {%for noticia in noticia%}
+            <div id="elemento_lista">
+                    {{noticia.titulo}}
+                    {{noticia.contenido|truncatewords_html:50|safe}}
+                    {{noticia.imagen}}
+                    <hr>
             </div>
-            <img src="{{noticia.imagen.url_255x190}}">
+            {%endfor%}
             
         </div>
         {{noticia.contenido|safe}}
