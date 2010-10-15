@@ -37,8 +37,11 @@ class Boletin(models.Model):
         verbose_name_plural = "Boletines"
     
     def save(self, force_insert=False, force_update=False):
-        n = Boletin.objects.all().count()
-        self.slug = str(n) + '-' + slugify(self.titulo)
+        try:
+            Boletin.objects.get(pk=self.id)
+        except:
+            n = Boletin.objects.all().count()
+            self.slug = str(n) + '-' + slugify(self.titulo)
         super(Boletin, self).save(force_insert, force_update)
 
     #Para jalar las tags
