@@ -11,14 +11,6 @@
        close_image   : '{{MEDIA_URL}}imagen/closelabel.gif'
      }); 
 });
-
-function cargar_video(video_id){
-    var params = { allowScriptAccess: "always" };
-    var atts = { id: "ytPlayer" };
-    swfobject.embedSWF("http://www.youtube.com/v/" + video_id + "&enablejsapi=1&playerapiid=player1", 
-                       "videoDiv", "480", "295", "8", null, null, params, atts);
-}
-
 </script>
  {%endblock%}
 
@@ -27,7 +19,7 @@ function cargar_video(video_id){
          <div id="video-{{video.id}}">
          <h1>{{video.titulo}}</h1>
          {{video.descripcion}}
-         <a href="/videos/popup/{{video.id}}/" rel='facebox' onClick="cargar_video('{{video.video|youtube_video_id}}')"><img id='video-{{video.id}}' class='ythumb' src="{{video.video|youthumbnail:'s'}}"/></a>
+         <a href="/videos/popup/{{video.id}}/" rel='facebox' ><img id='video-{{video.id}}' class='ythumb' src="{{video.video|youthumbnail:'s'}}"/></a>
          </div>
          {%endfor%}
     {%endblock %}
