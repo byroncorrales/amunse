@@ -9,7 +9,13 @@ from django.core.exceptions import ViewDoesNotExist
 from noticias.models import *
 
 def noticia_detalle(request,slug):
-    noticia = Noticia.objects.get(slug=slug)
+    noticia = get_object_or_404(Noticia, slug=slug)
     dicc = {'noticia': noticia,
            }
     return direct_to_template(request, 'noticias/noticia_detalle.html',dicc)
+
+def noticia_lista(request):
+    noticia = Noticia.objects.all().order_by('-fecha','-id')
+    dicc = {'noticia': noticia,
+           }
+    return direct_to_template(request, 'noticias/noticia_lista.html',dicc)
