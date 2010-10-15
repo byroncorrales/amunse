@@ -28,8 +28,11 @@ class Video(models.Model):
         verbose_name_plural = "Videos"
     
     def save(self, force_insert=False, force_update=False):
-        n = Video.objects.all().count()
-        self.slug = str(n) + '-' + slugify(self.titulo)
+        try:
+            Video.objects.get(pk=self.id)
+        except:
+            n = Video.objects.all().count()
+            self.slug = str(n) + '-' + slugify(self.titulo)
         super(Video, self).save(force_insert, force_update)
 
     #Para jalar las tags

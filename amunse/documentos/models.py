@@ -72,8 +72,11 @@ class Archivo(models.Model):
         return self.subcategoria.categoria.nombre
     
     def save(self, force_insert=False, force_update=False):
-        n = Archivo.objects.all().count()
-        self.slug = str(n) + '-' + slugify(self.nombre)
+        try:
+            Archivo.objects.get(pk=self.id)
+        except:
+            n = Archivo.objects.all().count()
+            self.slug = str(n) + '-' + slugify(self.nombre)
         super(Archivo, self).save(force_insert, force_update)
 
     #Para jalar las tags

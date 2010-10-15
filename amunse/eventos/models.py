@@ -31,8 +31,11 @@ class Evento(models.Model):
         verbose_name_plural = "Eventos"
     
     def save(self, force_insert=False, force_update=False):
-        n = Evento.objects.all().count()
-        self.slug = str(n) + '-' + slugify(self.titulo)
+        try:
+            Evento.objects.get(pk=self.id)
+        except:
+            n = Evento.objects.all().count()
+            self.slug = str(n) + '-' + slugify(self.titulo)
         super(Evento, self).save(force_insert, force_update)
 
     #Para jalar las tags

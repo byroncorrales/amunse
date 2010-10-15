@@ -37,8 +37,11 @@ class Revista(models.Model):
         verbose_name_plural = "Revistas"
     
     def save(self, force_insert=False, force_update=False):
-        n = Revista.objects.all().count()
-        self.slug = str(n) + '-' + slugify(self.titulo)
+        try:
+            Revista.objects.get(pk=self.id)
+        except:
+            n = Revista.objects.all().count()
+            self.slug = str(n) + '-' + slugify(self.titulo)
         super(Revista, self).save(force_insert, force_update)
 
     #Para jalar las tags
