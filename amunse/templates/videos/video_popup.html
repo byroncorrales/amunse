@@ -1,9 +1,1 @@
-{%load youthumb%}
-<script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js" type="text/javascript"></script>
-<script>
-    var params = { allowScriptAccess: "always" };
-    var atts = { id: "ytPlayer" };
-    swfobject.embedSWF("http://www.youtube.com/v/{{video.video|youtube_video_id}}&enablejsapi=1&playerapiid=player1", 
-                       "videoDiv", "480", "295", "8", null, null, params, atts);
-</script>
 <div id="videoDiv">Cargando</div>
