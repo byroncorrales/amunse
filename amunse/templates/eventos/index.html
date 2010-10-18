@@ -1,0 +1,30 @@
+{%extends "interna.html"%}
+{%block title%}Eventos{%endblock%}
+{%block cuerpo%}
+       <h2>Eventos</h2>
+       
+       <div id="lista">
+           {%for evento in eventos.object_list%}
+           <div id="elemento_lista">
+               {{evento.titulo}}<br>
+               {{evento.fecha_inicio}}<br>
+               {{evento.fecha_final}}<br>
+               {{evento.lugar}}<br>
+               {{evento.contenido|safe}}<br>
+               <a href="/eventos/evento/{{evento.slug}}/">Mas info</a><br>
+                   <hr>
+           </div>
+           {%endfor%}
+           {%if eventos.has_previous%}
+           <a href="?page={{ eventos.previous_page_number }}">anterior</a>
+           {%endif%}
+           <span class="current">
+               Página {{ eventos.number }} de {{ eventos.paginator.num_pages }}.
+           </span>
+           {%if eventos.has_next%}
+           <a href="?page={{ eventos.next_page_number }}">siguiente</a>
+           {%endif%}
+       </div>
+{%endblock %}
+
+ 
