@@ -72,22 +72,3 @@ class Noticia(models.Model):
     
 #    def categorias(self):
 #        return self.Noticia.all()[0].categoria.nombre
-
-class Comentario(models.Model):
-    '''Modelo que representa los comentarios de las noticias'''
-    noticia = models.ForeignKey(Noticia)
-    fecha = models.DateField()
-    estado = models.BooleanField('Publicado', blank=False, null=False)
-    nombre = models.CharField('Nombre', max_length=120, blank=False, null=False)
-    correo = models.EmailField('Correo', blank=True, null=True)
-    contenido = models.TextField('Contenido', blank=True, null=True)
-
-
-    def __unicode__(self):
-        return self.nombre
-
-    class Meta:
-        verbose_name = "Comentario"
-        verbose_name_plural = "Comentarios"
-
-
