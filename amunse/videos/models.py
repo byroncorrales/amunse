@@ -41,3 +41,11 @@ class Video(models.Model):
 
     def get_tags(self, tags):
         return Tag.objects.get_for_object(self)  
+
+    #metodo url del objeto
+    def get_full_url(self):
+        return "/videos/%s/" % self.slug
+
+    #metodo para obtener el nombre del objeto
+    def get_name(self):
+        return self.titulo

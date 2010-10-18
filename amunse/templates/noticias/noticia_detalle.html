@@ -19,7 +19,9 @@
         <div id="etiquetas" class="der">
             {% if noticia.tags %}
                 <b>Etiquetas: </b><br>
-                {{noticia.tags}}
+                {% for tag in noticia.get_tags %}
+                <a href="/tags/{{tag.id}}">{{tag}}</a>
+                {% endfor %}
             {%endif%}
         </div>
         <div id="noticias_relacionadas" class="izq">

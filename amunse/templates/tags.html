@@ -1,0 +1,6 @@
+ {%extends "base.html"%}
+ {%block contenido%}
+ {% for obj in objects %}
+ [{{obj.content_type}}] <a href="{{obj.object.get_full_url}}">{{obj.object.get_name}}</a><br>
+ {% endfor %}
+ {% endblock %}
