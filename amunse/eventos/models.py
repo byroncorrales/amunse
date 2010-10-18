@@ -4,7 +4,7 @@ from django.template.defaultfilters import slugify
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from tagging.fields import TagField
-from tagging.models import Tag
+from tagging.models import *
 from tagging_autocomplete.models import TagAutocompleteField
 from amunse.multimedia.models import Adjunto #importando el modelo de adjuntos genericos
 
@@ -37,6 +37,12 @@ class Evento(models.Model):
             n = Evento.objects.all().count()
             self.slug = str(n) + '-' + slugify(self.titulo)
         super(Evento, self).save(force_insert, force_update)
+
+    #override del metodo delete para eliminar el objeto de las tags tambien
+    def delete(self):
+        taggedItem = TaggedItem.objects.get(object_id=self.id)
+        taggedItem.delete()
+        super(Evento, self).delete()
 
     #Para jalar las tags
     def set_tags(self, tags):
