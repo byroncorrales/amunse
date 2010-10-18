@@ -1,6 +1,34 @@
- {%extends "interna.html"%}
- {%block extra_header%}
- {%endblock%}
+{%extends "interna.html"%}
+{%load comments%}
+{%load gravatar%}
+{%block extra_header%}
+<script type="text/javascript" charset="utf-8">  
+function bindPostCommentHandler() {  
+    $('#comment_form form input.submit-preview').remove();  
+    $('#comment_form form').submit(function() {  
+        $.ajax({  
+            type: "POST",  
+            data: $('#comment_form form').serialize(),  
+            url: "{% comment_form_target %}",  
+            cache: false,  
+            dataType: "html",  
+            success: function(html, textStatus) {  
+                $('#comment_form form').replaceWith(html);  
+                bindPostCommentHandler();  
+            },  
+            error: function (XMLHttpRequest, textStatus, errorThrown) {  
+                $('#comment_form form').replaceWith('Error: su comentario no pudo ser guardado en estos momentos.');  
+            }  
+        });  
+        return false;  
+    });  
+}  
+  
+$(document).ready(function() {  
+    bindPostCommentHandler();  
+});  
+</script> 
+{%endblock%}
 
     {%block cuerpo%}
         <h2>{{noticia.titulo}}</h2>
@@ -24,6 +52,22 @@
                 {% endfor %}
             {%endif%}
         </div>
+        <div id="comment_form">
+        {% render_comment_form for noticia %}
+        </div>
+        {% get_comment_count for noticia as comment_count %}
+
+        <p>Esta entrada tiene {{ comment_count }} comentarios.</p>
+        {% get_comment_list for noticia as comment_list %}
+        {% for comment in comment_list %}
+        {% gravatar comment.user_email 48 %}
+        {%if comment.user_url%}
+        <p><a href="{{comment.user_url}}">{{comment.user_name}}</a> publicó el {{comment.submit_date}}:</p>
+        {%else%}
+        <p>{{comment.user_name}} publicó el {{comment.submit_date}}:</p>
+        {%endif%}
+        <p>{{comment.comment}}</p>
+        {% endfor %}
         <div id="noticias_relacionadas" class="izq">
         <b>Noticias Relacionadas</b><br>
             {% for noticia_rel in noticia_rel %}
@@ -32,5 +76,3 @@
         </div>
 
     {%endblock %}
-
- 
