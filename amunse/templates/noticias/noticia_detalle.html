@@ -9,12 +9,26 @@
             <div id="autor_noticia">
                 <b>Autor: </b>{{noticia.autor}}<br>
                 <b>Fecha: </b>{{noticia.fecha|date:"n M Y"}}<br>
-                {% if noticia.tags %}<b>Etiquetas: </b>{{noticia.tags}}{%endif%}
+                <b>Categoria: </b><a href="/noticias/categoria/{{noticia.categoria.slug}}">{{noticia.categoria.nombre}}</a><br>
             </div>
-            <img src="{{noticia.imagen.url_255x190}}">
+            {%if noticia.imagen %}<img src="{{noticia.imagen.url_255x190}}">{%endif%}
             
         </div>
         {{noticia.contenido|safe}}
+        <br>
+        <div id="etiquetas" class="der">
+            {% if noticia.tags %}
+                <b>Etiquetas: </b><br>
+                {{noticia.tags}}
+            {%endif%}
+        </div>
+        <div id="noticias_relacionadas" class="izq">
+        <b>Noticias Relacionadas</b><br>
+            {% for noticia_rel in noticia_rel %}
+                <a href="/noticias/{{noticia_rel.slug}}">{{noticia_rel.titulo}}</a>
+            {%endfor%}
+        </div>
+
     {%endblock %}
 
  

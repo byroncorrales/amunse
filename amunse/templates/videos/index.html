@@ -15,13 +15,37 @@
  {%endblock%}
 
     {%block cuerpo%}
-         {% for video in videos.object_list%}
-         <div id="video-{{video.id}}">
-         <h1>{{video.titulo}}</h1>
-         {{video.descripcion}}
-         <a href="/videos/popup/{{video.id}}/" rel='facebox' ><img id='video-{{video.id}}' class='ythumb' src="{{video.video|youthumbnail:'s'}}"/></a>
+        <h2>Videos</h2>
+        <div class="lista">
+                 {% for video in videos.object_list%}
+                 <div class="elemento_lista">
+                     <div id="video-{{video.id}}">
+                     <a href="/videos/popup/{{video.id}}/" rel='facebox' ><img width="276" height="200" id='video-{{video.id}}' class='ythumb' src="{{video.video|youthumbnail:'l'}}"/></a>
+                     <a href="/videos/popup/{{video.id}}/" rel='facebox' ><img src="{{MEDIA_URL}}imagen/reproducir.png"></a>
+                     <b>{{video.titulo}}</b><br><br>
+                     {{video.descripcion}}
+                     
+                     
+                     </div>
+                    <div class="separador"></div>
+                 </div>
+                 {%endfor%}
+            <div class="paginacion">
+                <span class="pagina-links">
+                {% if noticias.has_previous %}
+                <a href="?page={{ noticias.previous_page_number }}" class="pag_izq">Anterior</a>
+                {% endif %}
+
+                <span class="actual">
+                    Página {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+                </span>
+
+                {% if noticias.has_next %}
+                    <a href="?page={{ noticias.next_page_number }}" class="pag_der">Siguiente</a>
+                {% endif %}
+                </span>
+            </div>
          </div>
-         {%endfor%}
     {%endblock %}
 
  

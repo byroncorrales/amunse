@@ -1,31 +1,9 @@
  {%extends "interna.html"%}
  {%block extra_header%}
-<script type="text/javascript">
-    function mandacategoria(form){
-        var cat_slug = form.categoria.value;
-            if (cat_slug){
-                var url="/noticias/categoria/" + cat_slug;
-            }else
-            {
-                var url="/noticias/";
-            }
-
-        window.location = url;
-    }
-</script>
  {%endblock%}
+
     {%block cuerpo%}
-        <h2>Noticias</h2>
-        <div id="formulario_categoria">
-            <form name="formulario" action="" method="get">
-                        Categorias: <select id="id_categoria" name="categoria" > - 
-                            <option value="">-------</option>
-                            {%for categoria_noticia in categoria_noticia%}
-                            <option value="{{categoria_noticia.slug}}">{{categoria_noticia.nombre}}</option>
-                            {%endfor%}
-                        <input type="button" value="Filtrar" onClick="mandacategoria(this.form)"/>
-            </form>
-        </div>
+        <h2>Noticias | {{categoria.nombre}}</h2>
         
         <div class="lista">
             {%for noticia in noticias.object_list%}
@@ -34,7 +12,7 @@
                     <div class="titulo_noticia"><a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a></div>
                     {{noticia.contenido|truncatewords_html:50|safe}}
                     <div class="seguir_leyendo izq"><a class="con_flechita" href="/noticias/{{noticia.slug}}">Seguir leyendo</a></div>
-                    <div class="categoria_noticia der"><b>Categoria:</b> <i><a href="/noticias/categoria/{{noticia.categoria.slug}}">{{noticia.categoria}}</a></i></div>
+                    <div class="categoria_noticia der"><b>Categoria:</b> <i>{{noticia.categoria}}</i></div>
                     <div class="separador"></div>
             </div>
             {%endfor%}

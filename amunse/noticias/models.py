@@ -50,8 +50,11 @@ class Noticia(models.Model):
         verbose_name_plural = "Noticias"
     
     def save(self, force_insert=False, force_update=False):
-        n = Noticia.objects.all().count()
-        self.slug = str(n) + '-' + slugify(self.titulo)
+        try:
+            Noticia.objects.get(pk=self.id)            
+        except:
+            n = Noticia.objects.all().count()
+            self.slug = str(n) + '-' + slugify(self.titulo)
         super(Noticia, self).save(force_insert, force_update)
 
     #Para jalar las tags

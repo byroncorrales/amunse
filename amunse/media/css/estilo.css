@@ -35,6 +35,10 @@ p{
     margin-bottom:10px;
 }
 
+i {
+font-style:italic;
+}
+
 ol, ul {
      list-style: none
 }
@@ -260,6 +264,7 @@ b{
     margin-left:15px;
     background:#fde17b;
     border-bottom:#EFD069 1px solid;
+        border-top:#FFEBAA 1px solid;
     padding-left:10px;
     padding-top:8px;
     font-size:13px;
@@ -516,6 +521,129 @@ padding:5px;
 }
 
 
+.lista{
+
+}
+
+.elemento_lista{
+    border-bottom:#DFDFDE 1px solid;
+    margin-bottom:10px;
+    padding-bottom:8px;
+}
+
+.elemento_lista img{
+    margin-bottom:5px;
+    background:#eeeeb9;
+    padding:6px;
+    float:right;
+}
+
+
+.elemento_lista .titulo_noticia a, .elemento_lista .titulo_noticia a:visited{
+    text-decoration:none;
+    color:#698c45;
+    font-size:15px;
+    font-weight:bold;
+}
+
+.elemento_lista .seguir_leyendo a , .elemento_lista .seguir_leyendo a:visited{
+    display:block;
+    background:url(../imagen/boton_siguiente.png);
+    background-repeat:no-repeat;
+padding:3px;
+    text-decoration:none;
+    color:#6b6d68;
+    font-size:11px;
+    border: #cbcb78 solid 1px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    margin-right:5px;
+}
+
+.elemento_lista .seguir_leyendo a:hover{
+    color:#000;
+}
+
+.con_flechita{
+    background:url(../imagen/boton_siguiente.png) !important;
+    background-repeat:no-repeat;
+    padding-right:20px !important;
+    background-position:center right !important;
+}
+
+.elemento_lista .categoria_noticia{
+    font-size:11px;
+}
+
+#noticias_relacionadas{
+width:350px;
+}
+
+#noticias_relacionadas b{
+font-size:16px;
+}
+#noticias_relacionadas a, #noticias_relacionadas a:visited{
+    color:#81986B;
+    text-decoration:none;
+    background:none;
+    border-bottom:#EEECE3 1px solid;
+    font-size:13px;
+    font-weight:bold;
+    display:block;
+    height:20px;
+    padding-top:6px;
+    padding-bottom:6px;
+    padding-right:6px;
+}
+
+#noticias_relacionadas a:hover{
+    color:#647F4A;
+}
+
+#etiquetas{
+width:200px;
+}
+#formulario_categoria{
+
+}
+
+.paginacion{
+    padding:10px;
+    border:#f2f2db 1px solid;
+    background:#fff url(../imagen/autor_noticia.png);
+    background-repeat:repeat-x;
+    background-position:bottom left;
+}
+
+.paginacion a, .paginaciona a:visited{
+text-decoration:none;
+font-weight:bold;
+color:#4D4D4D;
+}
+
+.paginacion a:hover{
+color:#000;
+}
+.pag_izq{
+    background:url(../imagen/pag_izq.png);
+    background-repeat:no-repeat;
+    background-position:center left;
+    padding-left: 22px;
+    border-right:#BFBFBF 1px solid;
+    margin-right:5px;
+    padding-right: 8px;
+}
+
+.pag_der{
+    background:url(../imagen/pag_der.png);
+    background-repeat:no-repeat;
+    background-position:center right;
+    padding-right: 23px;
+    border-left:#BFBFBF 1px solid;
+    margin-left:5px;
+    padding-left: 8px;
+}
 /* Termina Contenido*/
 
 /* Comienza Footer */
