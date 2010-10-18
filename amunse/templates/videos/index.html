@@ -32,16 +32,16 @@
                  {%endfor%}
             <div class="paginacion">
                 <span class="pagina-links">
-                {% if noticias.has_previous %}
-                <a href="?page={{ noticias.previous_page_number }}" class="pag_izq">Anterior</a>
+                {% if videos.has_previous %}
+                <a href="?page={{ videos.previous_page_number }}" class="pag_izq">Anterior</a>
                 {% endif %}
 
                 <span class="actual">
-                    Página {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+                    Página {{ videos.number }} de {{ videos.paginator.num_pages }}.
                 </span>
 
-                {% if noticias.has_next %}
-                    <a href="?page={{ noticias.next_page_number }}" class="pag_der">Siguiente</a>
+                {% if videos.has_next %}
+                    <a href="?page={{ videos.next_page_number }}" class="pag_der">Siguiente</a>
                 {% endif %}
                 </span>
             </div>
