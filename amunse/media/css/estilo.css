@@ -604,6 +604,20 @@ font-size:16px;
 #etiquetas{
 width:200px;
 }
+
+#detalles_noticia a,
+#detalles_noticia a:visited,
+.categoria_noticia a,
+.categoria_noticia a:visited{
+    color:#5B5C58;
+    text-decoration:underline;
+}
+
+#detalles_noticia a:hover,
+.categoria_noticia a:hover{
+    color:#000;
+}
+
 #formulario_categoria{
 
 }
