@@ -16,8 +16,8 @@ class Evento(models.Model):
     '''Modelo que representa el tipo de contenido Noticias'''
     titulo = models.CharField('Título', max_length = 120, unique = True,blank = False, null = False)
     slug = models.SlugField(max_length = 120, unique = True,help_text = 'unico Valor',editable=False)
-    fecha_inicio = models.DateTimeField('Fecha de Inicio',blank = False, null = False)
-    fecha_final = models.DateTimeField('Fecha Final',blank = False, null = False)
+    fecha_inicio = models.DateTimeField('Fecha de Inicio',blank = False, null = False, help_text='La hora debe presentarse en hora militar 13 = 1pm, 14 = 2pm etc..')
+    fecha_final = models.DateTimeField('Fecha Final',blank = False, null = False, help_text='La hora debe presentarse en hora militar 13 = 1pm, 14 = 2pm etc..')
     lugar = models.CharField('Lugar', max_length = 150,blank = True, null = True)
     contenido = models.TextField('Contenido',blank = True, null = True)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')

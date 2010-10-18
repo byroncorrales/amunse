@@ -16,14 +16,15 @@
  {%endblock%}
     {%block cuerpo%}
         <h2>Noticias</h2>
-        <div id="formulario_categoria">
+        <div id="acciones">
             <form name="formulario" action="" method="get">
-                        Categorias: <select id="id_categoria" name="categoria" > - 
+                        <div class="label">Categorias: </div>
+                        <select id="id_categoria" name="categoria" >  
                             <option value="">-------</option>
                             {%for categoria_noticia in categoria_noticia%}
                             <option value="{{categoria_noticia.slug}}">{{categoria_noticia.nombre}}</option>
                             {%endfor%}
-                        <input type="button" value="Filtrar" onClick="mandacategoria(this.form)"/>
+                        <input id="id_boton" type="button" value="Filtrar" onClick="mandacategoria(this.form)"/>
             </form>
         </div>
         

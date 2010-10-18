@@ -618,8 +618,44 @@ width:200px;
     color:#000;
 }
 
-#formulario_categoria{
+#acciones{
+    background:#fff url(../imagen/acciones.png);
+    background-repeat:no-repeat;
+    width:293px;
+    height:27px;
+    margin-top:-5px;
+    margin-bottom:10px;
+    padding-top:3px;
+}
 
+#acciones .label{
+    padding-left:5px;
+    width:76px;
+    padding-top:2px;
+    margin-right:12px;
+    color:#A7A7A7;
+    float:left;
+}
+
+#acciones #id_categoria{
+width:150px;
+background: #fff url(../imagen/acciones_combo.png);
+background-repeat:repeat-x;
+border:0;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+}
+
+#acciones #id_boton{
+background:#5C8137;
+color:#fff;
+border:0;
+padding:3px;
+margin-left:4px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
 }
 
 .paginacion{
