@@ -84,5 +84,12 @@ class Archivo(models.Model):
         Tag.objects.update_tags(self, tags)
 
     def get_tags(self, tags):
-        return Tag.objects.get_for_object(self)      
+        return Tag.objects.get_for_object(self)
 
+    #metodo url del objeto
+    def get_full_url(self):
+        return "/documentos/%s/" % self.slug
+
+    #metodo para obtener el nombre del objeto
+    def get_name(self):
+        return self.nombre
