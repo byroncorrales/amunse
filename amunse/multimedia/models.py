@@ -28,6 +28,8 @@ class Adjunto(models.Model):
     class Meta:
         verbose_name = "Adjunto"
         verbose_name_plural = "Adjuntos"
-        
+
+class ImagenAdjunta(models.Model):
+    imagen = models.ImageField(upload_to='attachments/imagenes')
 
 
