@@ -1,5 +1,9 @@
  {%extends "base.html"%}
+ {% block title %}
+ {{tag}}
+ {% endblock %}
  {%block contenido%}
+ <h1>{{tag|upper}}</h1>
  {% for obj in objects %}
  [{{obj.content_type}}] <a href="{{obj.object.get_full_url}}">{{obj.object.get_name}}</a><br>
  {% endfor %}
