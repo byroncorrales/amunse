@@ -55,7 +55,7 @@
         <h2>Noticias</h2>
         {% for noticia in noticia %}
         <div class="contenedor_noticia_inicio">
-            <a href="/noticias/{{noticia.slug}}"><img src="{{noticia.imagen.url_178x90}}"></a>
+            {%if noticia.imagen %}<a href="/noticias/{{noticia.slug}}"><img src="{{noticia.imagen.url_178x90}}"></a>{%endif%}
             <a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a>
             <p>{{noticia.contenido|truncatewords_html:15|safe}}</p>
         </div>
