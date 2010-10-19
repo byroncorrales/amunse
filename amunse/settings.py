@@ -66,6 +66,8 @@ INSTALLED_APPS = (
     'paginas',
     'municipios',
     'proyectos',
-
+    'haystack',
 )
 
+HAYSTACK_SITECONF = 'amunse.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'simple'
