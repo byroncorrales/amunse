@@ -48,7 +48,11 @@
 {%endblock%}
 {%block cuerpo%}
        <h2>Calendario</h2>
-       
+        <div id="acciones">
+            <div class="label">Vistas </div>
+            <a href="/eventos/calendario"><img src="{{MEDIA_URL}}imagen/calendarioicon.png">Calendario</a>
+            <a href="/eventos"><img src="{{MEDIA_URL}}imagen/listaicon.png">Lista</a>
+        </div>
        <div id="calendar"></div>
 {%endblock %}
 

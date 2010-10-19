@@ -2,7 +2,11 @@
 {%block title%}Eventos{%endblock%}
 {%block cuerpo%}
        <h2>Eventos</h2>
-       
+        <div id="acciones">
+            <div class="label">Vistas </div>
+            <a href="/eventos/calendario"><img src="{{MEDIA_URL}}imagen/calendarioicon.png">Calendario</a>
+            <a href="/eventos"><img src="{{MEDIA_URL}}imagen/listaicon.png">Lista</a>
+        </div>
        <div id="lista">
            {%for evento in eventos.object_list%}
            <div id="elemento_lista">

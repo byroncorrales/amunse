@@ -658,6 +658,27 @@ margin-left:4px;
     -moz-border-radius: 5px 5px 5px 5px;
 }
 
+#acciones a, #acciones a:visited{
+    text-decoration:none;
+    color:#fff;
+    font-weight:bold;
+    margin-right:15px;
+    font-size:15px;
+}
+
+#acciones a:hover{
+    border-bottom:#729C49 4px solid;
+}
+
+#acciones img{
+    margin-right:8px;
+}
+
+
+.fc-header-title{
+background:none !important;
+}
+
 .paginacion{
     padding:10px;
     border:#f2f2db 1px solid;
