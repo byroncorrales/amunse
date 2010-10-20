@@ -16,7 +16,6 @@
                <a href="/archivos/{{boletin.boletin}}"><img src="{{MEDIA_URL}}imagen/descargar.jpg"></a>
 
         <div id="etiquetas" class="der">
-        {{boletin.tags}}
             {% if boletin.tags %}
                 <b>Etiquetas: </b><br>
                 {% for tag in boletin.get_tags %}
