@@ -33,6 +33,9 @@ class Revista(models.Model):
     def get_download_url(self):
         return '%s%s' % (settings.MEDIA_URL, self.adjunto)
         
+    def get_full_url(self):
+        return '/revistas/%s/' % self.slug 
+
     class Meta:
         verbose_name = "Revista"
         verbose_name_plural = "Revistas"

@@ -21,7 +21,11 @@
 
             {% for result in page.object_list %}
                 <p>
+                    {%if result.object.titulo%}
                     <a href="{{ result.object.get_full_url }}">{{ result.object.titulo}}</a>
+                    {%else%}
+                    <a href="{{ result.object.get_full_url }}">{{ result.object.nombre}}</a>
+                    {%endif%}
                 </p>
             {% empty %}
                 <p>No hay resultados</p>

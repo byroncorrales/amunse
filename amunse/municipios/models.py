@@ -20,6 +20,9 @@ class Municipio(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    def get_full_url(self):
+        return '/municipios/%s/' % self.slug
+
     class Meta:
         verbose_name = "Municipio"
         verbose_name_plural = "Municipios"
@@ -27,5 +30,3 @@ class Municipio(models.Model):
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.nombre)
         super(Municipio, self).save(force_insert, force_update)
-
-
