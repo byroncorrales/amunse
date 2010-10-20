@@ -1,0 +1,35 @@
+{%extends "interna.html"%}
+{%block title%}Revistas{%endblock%}
+{%block cuerpo%}
+       <h2>Revistas</h2>
+       <div id="lista">
+           {%for revista in revistas.object_list%}
+           <div class="elemento_lista">
+               <img src="{{revista.imagen.url_80x100}}">
+               <div class="titulo"><a href="/boletines/{{revista.slug}}/">{{revista.titulo}}</a></div>
+               <div id="fechas">
+                   <b>Fecha de publicación:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{revista.fecha|date:"d M Y"}} 
+               </div>
+               <br><br>
+               <div class="seguir_leyendo izq"><a class="con_flechita" href="/revistas/{{revista.slug}}/">Mas información</a></div>
+               <div class="seguir_leyendo izq"><a class="con_flechita" href="/archivos/{{revista.revista}}">Descargar</a></div><br>
+               <div class="separador"></div>
+           </div>
+           {%endfor%}
+           <div class="paginacion">
+               <span class="pagina-links">
+                   {%if eventos.has_previous%}
+                   <a href="?page={{ revistas.previous_page_number }}" class="pag_izq">anterior</a>
+                   {%endif%}
+                   <span class="actual">
+                       Página {{ revistas.number }} de {{ revistas.paginator.num_pages }}.
+                   </span>
+                   {%if eventos.has_next%}
+                   <a href="?page={{ revistas.next_page_number }}" class="pag_der">siguiente</a>
+                   {%endif%}
+               </span>
+           </div>
+       </div>
+{%endblock %}
+
+ 

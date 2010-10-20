@@ -1,0 +1,31 @@
+{%extends "interna.html"%}
+{%block extra_header%}
+{%endblock%}
+{%block cuerpo%}
+    <h2>{{revista.titulo}}</h2>
+       
+       <div id="lista">
+           <div id="elemento_lista">
+               <img src="{{revista.imagen.url_190x230}}" class="der">
+               <div id="fechas">
+                   <b>Publicado:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{revista.fecha|date:"d M Y"}}
+               </div>
+               <br>
+               {%if revista.edicion %}<b>Edicion No: </b>{{revista.edicion}}<br><br>{%endif%}
+               {%if revista.descripcion %}{{revista.descripcion|safe}}<br>{%endif%}<br>
+               <a href="/archivos/{{revista.revista}}"><img src="{{MEDIA_URL}}imagen/descargar.jpg"></a>
+
+        <div id="etiquetas" class="der">
+        {{revista.tags}}
+            {% if revista.tags %}
+                <b>Etiquetas: </b><br>
+                {% for tag in revista.get_tags %}
+                <a href="/tags/{{tag.id}}">{{tag}}</a>
+                {% endfor %}
+            {%endif%}
+        </div>
+           </div>
+       </div>
+{%endblock %}
+
+ 

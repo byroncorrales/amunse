@@ -36,7 +36,7 @@ $(document).ready(function() {
         <div id="detalles_noticia" class="der">
             <div id="autor_noticia">
                 <b>Autor: </b>{{noticia.autor}}<br>
-                <b>Fecha: </b>{{noticia.fecha|date:"n M Y"}}<br>
+                <b>Fecha: </b>{{noticia.fecha|date:"d M Y"}}<br>
                 <b>Categoria: </b><a href="/noticias/categoria/{{noticia.categoria.slug}}">{{noticia.categoria.nombre}}</a><br>
             </div>
             {%if noticia.imagen %}<img src="{{noticia.imagen.url_255x190}}">{%endif%}
