@@ -25,6 +25,8 @@ function bindPostCommentHandler() {
 }  
   
 $(document).ready(function() {  
+    //super dirty hack! effin django comment framework
+    $("label[for='id_email']").html('E-mail');
     bindPostCommentHandler();  
 });  
 </script> 
