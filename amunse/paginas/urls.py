@@ -4,4 +4,5 @@ from models import Pagina
 
 urlpatterns = patterns('paginas.views',
     (r'^index/$', 'inicio'),
+    (r'^paginas/(?P<slug>[-\w]+)/$', 'pagina'),
 )

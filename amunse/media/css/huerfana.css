@@ -1,0 +1,41 @@
+body, html{
+    background-color: #fff;
+    font-family: "Trebuchet MS", "Lucida Grande", sans-serif;
+    font-size: 14px;
+}
+label{
+    font-size: 14px;
+    font-weight: normal;
+    color: #069;
+}
+.submit{
+    border: 1px solid #069;
+    font-size: 14px;
+    background-color: #069;
+    color: #fff;
+}
+.submit:hover{
+    color: orange;
+}
+.subida{
+    max-width: 350px;
+    max-height: 300px;
+    border: 1px solid #959595;
+    padding: 2px;
+    background-color: #C8C8C8;
+}
+.link{
+    background-color: #069;
+    color: #fff;
+    height: 25px;
+    width: 70px;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 25px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+.link a{
+    color: #fff;
+}

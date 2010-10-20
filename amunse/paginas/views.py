@@ -32,3 +32,11 @@ def tags(request, id):
     tag = get_object_or_404(Tag, pk=int(id))
     objects = TaggedItem.objects.filter(tag=tag)
     return render_to_response('tags.html', RequestContext(request, locals()))
+
+def pagina(request,slug):
+    '''Muestra el detalle de la pagina'''
+    pagina = get_object_or_404(Pagina, slug=slug)
+    #Jala las ultimas noticias relacionadas con la misma categoria y excluye a la noticia misma
+    dicc = {'pagina': pagina,
+           }
+    return direct_to_template(request, 'paginas/pagina_detalle.html',dicc)

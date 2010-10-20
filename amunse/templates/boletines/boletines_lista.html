@@ -1,0 +1,35 @@
+{%extends "interna.html"%}
+{%block title%}Boletines{%endblock%}
+{%block cuerpo%}
+       <h2>Boletines</h2>
+       <div id="lista">
+           {%for boletin in boletines.object_list%}
+           <div class="elemento_lista">
+               <img src="{{boletin.imagen.url_80x100}}">
+               <div class="titulo"><a href="/boletines/{{boletin.slug}}/">{{boletin.titulo}}</a></div>
+               <div id="fechas">
+                   <b>Fecha de publicación:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{boletin.fecha|date:"n M Y"}} 
+               </div>
+               <br><br>
+               <div class="seguir_leyendo izq"><a class="con_flechita" href="/boletines/{{boletin.slug}}/">Mas información</a></div>
+               <div class="seguir_leyendo izq"><a class="con_flechita" href="/archivos/{{boletin.boletin}}">Descargar</a></div><br>
+               <div class="separador"></div>
+           </div>
+           {%endfor%}
+           <div class="paginacion">
+               <span class="pagina-links">
+                   {%if eventos.has_previous%}
+                   <a href="?page={{ boletines.previous_page_number }}" class="pag_izq">anterior</a>
+                   {%endif%}
+                   <span class="actual">
+                       Página {{ eventos.number }} de {{ eventos.paginator.num_pages }}.
+                   </span>
+                   {%if eventos.has_next%}
+                   <a href="?page={{ boletines.next_page_number }}" class="pag_der">siguiente</a>
+                   {%endif%}
+               </span>
+           </div>
+       </div>
+{%endblock %}
+
+ 

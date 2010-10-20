@@ -7,6 +7,7 @@ from tagging.fields import TagField
 from tagging.models import Tag
 from thumbs import ImageWithThumbsField
 from tagging_autocomplete.models import TagAutocompleteField
+from customfilefield import ContentTypeRestrictedFileField
 
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
 from south.modelsinspector import add_introspection_rules
@@ -19,7 +20,7 @@ class Revista(models.Model):
     fecha = models.DateField('Fecha',blank = False, null = False)
     edicion = models.IntegerField('Número de edición',blank = True, null = True)
     imagen = ImageWithThumbsField('Imagen portada',upload_to='attachments/imagenes', sizes=((80,100),(190,230)), help_text="Imágen de portada")
-    boletin = models.FileField('Revista Adjunto',upload_to = 'attachments/revistas')
+    revista = ContentTypeRestrictedFileField(verbose_name='Revista adjunto', upload_to = 'attachments/revistas', content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
     descripcion = models.TextField('Descripción',blank = True, null = True)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 

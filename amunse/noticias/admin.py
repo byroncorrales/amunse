@@ -24,22 +24,22 @@ class NoticiaAdmin(admin.ModelAdmin):
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
               '../archivos/js/editores/textareas.js',]
 
-class ComentarioAdmin(admin.ModelAdmin):
-    list_display = ['nombre', 'fecha','estado','noticia' ]
-    list_filter = ['estado']
-    search_fields = ['nombre']
-    save_on_top = True
-    date_hierarchy = 'fecha'
-    actions = ['publicar','nopublicar']
+#class ComentarioAdmin(admin.ModelAdmin):
+#    list_display = ['nombre', 'fecha','estado','noticia' ]
+#    list_filter = ['estado']
+#    search_fields = ['nombre']
+#    save_on_top = True
+#    date_hierarchy = 'fecha'
+#    actions = ['publicar','nopublicar']
 
-    def publicar(self, request, queryset):
-        queryset.update(estado=True)
-    publicar.short_description = "Marcar los comentarios como publicados"
+#    def publicar(self, request, queryset):
+#        queryset.update(estado=True)
+#    publicar.short_description = "Marcar los comentarios como publicados"
     
-    def nopublicar(self, request, queryset):
-        queryset.update(estado=False)
-    nopublicar.short_description = "Marcar los comentarios como No Publicados"
+#    def nopublicar(self, request, queryset):
+#        queryset.update(estado=False)
+#    nopublicar.short_description = "Marcar los comentarios como No Publicados"
 
 admin.site.register(CategoriaNoticia, CategoriaNoticiaAdmin)
 admin.site.register(Noticia, NoticiaAdmin)
-admin.site.register(Comentario, ComentarioAdmin)
+#admin.site.register(Comentario, ComentarioAdmin)
