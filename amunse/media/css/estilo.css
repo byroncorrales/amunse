@@ -115,16 +115,11 @@ b{
  padding:2px;
 }
 #contenido_pagina tbody td a, #contenido_paginatbody th a {
- color:#6C8C37;
- text-decoration:none;
+ text-decoration:underline;
  font-weight:normal; 
- display:block;
- background: transparent url(links_yellow.gif) no-repeat 0% 50%;
- padding-left:15px;
 }
 #contenido_pagina tbody td a:hover, #contenido_pagina tbody th a:hover {
- color:#009193;
- text-decoration:none;
+ text-decoration:underline;
 }
 
 /* Termina Reseteando CSS */

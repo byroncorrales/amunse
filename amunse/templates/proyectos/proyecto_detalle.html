@@ -8,6 +8,48 @@
         <h2>{{proyecto.nombre}}</h2>
 
         <div id="contenido_pagina">
+
+            <table>
+            <tbody>
+                <tr>
+                    <td style="vertical-align: top;"><b>Monto</b><br>
+                    </td>
+                    <td style="vertical-align: top;">$ {{proyecto.monto}}<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;"><b>Lugar</b><br>
+                    </td>
+                    <td style="vertical-align: top;">{{proyecto.lugar}}<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;"><b>Estado</b><br>
+                    </td>
+                    <td style="vertical-align: top;">{%if proyecto.estado = 0 %}En Desarrollo {%else%} Terminado{%endif%}<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;"><b>Periodo</b><br>
+                    </td>
+                    <td style="vertical-align: top;">{{proyecto.fecha_inicio|date:"M Y"}} - {{proyecto.fecha_final|date:"M Y" }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;"><b>Areas</b><br>
+                    </td>
+                    <td style="vertical-align: top;">{%for area in proyecto.area.all%}<a href="/proyectos/area/{{area.slug}}">{{area}}</a> | {%endfor%}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;"><b>Financiadores</b><br>
+                    </td>
+                    <td style="vertical-align: top;">{%for financiador in proyecto.financiador.all%}{{financiador}} |{%endfor%}<br>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+            <br>
             <b>OBJETIVOS</b>
             {{proyecto.objetivos|safe}}<br>
             <b>RESULTADOS</b>
