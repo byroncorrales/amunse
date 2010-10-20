@@ -244,9 +244,9 @@ table.fc-header {
 .fc-agenda .fc-event-time,
 .fc-event a {
 	border-style: solid; 
-	border-color: #36c;     /* default BORDER color (probably the same as background-color) */
-	background-color: #36c; /* default BACKGROUND color */
-	color: #fff;            /* default TEXT color */
+	border-color: #D5E275;     /* default BORDER color (probably the same as background-color) */
+	background-color: #ecfa88; /* default BACKGROUND color */
+	color: #333;            /* default TEXT color */
 	}
 	
 	/* Use the 'className' CalEvent property and the following

@@ -6,11 +6,13 @@
        
        <div id="lista">
            <div id="elemento_lista">
-               {{evento.fecha_inicio}}<br>
-               {{evento.fecha_final}}<br>
-               {{evento.lugar}}<br>
-               {{evento.contenido|safe}}<br>
-                   <hr>
+               <div id="fechas">
+                   <b>Inicia:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{evento.fecha_inicio|date:"n M Y"}} <img src="{{MEDIA_URL}}imagen/icon_hora.jpg"> {{evento.fecha_inicio|date:"h:i a"}}
+                   <b>Finaliza:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{evento.fecha_final|date:"n M Y"}} <img src="{{MEDIA_URL}}imagen/icon_hora.jpg"> {{evento.fecha_final|date:"h:i a"}}
+               </div>
+               <br>
+               {%if evento.lugar %}<b>Lugar: </b>{{evento.lugar}}<br><br>{%endif%}
+               {%if evento.contenido %}{{evento.contenido|safe}}<br>{%else%}No hay información adicional{%endif%}
            </div>
        </div>
 {%endblock %}

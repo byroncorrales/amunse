@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from django.conf import settings
 from django.core.paginator import Paginator, InvalidPage
 from django.http import Http404

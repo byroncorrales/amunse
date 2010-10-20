@@ -16,14 +16,15 @@
  {%endblock%}
     {%block cuerpo%}
         <h2>Noticias</h2>
-        <div id="formulario_categoria">
+        <div id="acciones">
             <form name="formulario" action="" method="get">
-                        Categorias: <select id="id_categoria" name="categoria" > - 
+                        <div class="label">Categorias </div>
+                        <select id="id_categoria" name="categoria" >  
                             <option value="">-------</option>
                             {%for categoria_noticia in categoria_noticia%}
                             <option value="{{categoria_noticia.slug}}">{{categoria_noticia.nombre}}</option>
                             {%endfor%}
-                        <input type="button" value="Filtrar" onClick="mandacategoria(this.form)"/>
+                        <input id="id_boton" type="button" value="Filtrar" onClick="mandacategoria(this.form)"/>
             </form>
         </div>
         
@@ -31,7 +32,7 @@
             {%for noticia in noticias.object_list%}
             <div class="elemento_lista">
                     {%if noticia.imagen %}<a href="/noticias/{{noticia.slug}}"><img src="{{noticia.imagen.url_178x90}}"></a>{%endif%}
-                    <div class="titulo_noticia"><a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a></div>
+                    <div class="titulo"><a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a></div>
                     {{noticia.contenido|truncatewords_html:50|safe}}
                     <div class="seguir_leyendo izq"><a class="con_flechita" href="/noticias/{{noticia.slug}}">Seguir leyendo</a></div>
                     <div class="categoria_noticia der"><b>Categoria:</b> <i><a href="/noticias/categoria/{{noticia.categoria.slug}}">{{noticia.categoria}}</a></i></div>

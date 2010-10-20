@@ -1,4 +1,4 @@
- # -*- coding: UTF-8 -*-
+# -*- coding: UTF-8 -*-
 from django.db import models
 from amunse.multimedia.models import Adjunto #importando el modelo de adjuntos genericos
 from django.template.defaultfilters import slugify
@@ -14,9 +14,12 @@ class Pagina(models.Model):
     def __unicode__(self):
         return self.titulo
 
+    def get_full_url(self):
+        return "/paginas/%s/" % self.slug
+
     class Meta:
-        verbose_name = "Página"
-        verbose_name_plural = "Páginas"
+        verbose_name = "Pagina"
+        verbose_name_plural = "Paginas"
     
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.titulo)

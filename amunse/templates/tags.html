@@ -1,10 +1,15 @@
- {%extends "base.html"%}
+{%extends "interna.html"%}
  {% block title %}
  {{tag}}
  {% endblock %}
- {%block contenido%}
- <h1>{{tag|upper}}</h1>
+ {%block cuerpo%}
+ <h2>Contenidos que contienen la etiqueta: {{tag|upper}}</h2>
  {% for obj in objects %}
- [{{obj.content_type}}] <a href="{{obj.object.get_full_url}}">{{obj.object.get_name}}</a><br>
+     {% if obj.object %}
+     <div class="lista_etiqueta">
+        [{{obj.content_type}}] <a href="{{obj.object.get_full_url}}">{{obj.object.get_name}}</a><br>
+    </div>
+     {% endif %}
  {% endfor %}
+
  {% endblock %}

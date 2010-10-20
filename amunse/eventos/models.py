@@ -4,7 +4,7 @@ from django.template.defaultfilters import slugify
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from tagging.fields import TagField
-from tagging.models import Tag
+from tagging.models import *
 from tagging_autocomplete.models import TagAutocompleteField
 from amunse.multimedia.models import Adjunto #importando el modelo de adjuntos genericos
 
@@ -16,8 +16,8 @@ class Evento(models.Model):
     '''Modelo que representa el tipo de contenido Noticias'''
     titulo = models.CharField('Título', max_length = 120, unique = True,blank = False, null = False)
     slug = models.SlugField(max_length = 120, unique = True,help_text = 'unico Valor',editable=False)
-    fecha_inicio = models.DateTimeField('Fecha de Inicio',blank = False, null = False)
-    fecha_final = models.DateTimeField('Fecha Final',blank = False, null = False)
+    fecha_inicio = models.DateTimeField('Fecha de Inicio',blank = False, null = False, help_text='La hora debe presentarse en hora militar 13 = 1pm, 14 = 2pm etc..')
+    fecha_final = models.DateTimeField('Fecha Final',blank = False, null = False, help_text='La hora debe presentarse en hora militar 13 = 1pm, 14 = 2pm etc..')
     lugar = models.CharField('Lugar', max_length = 150,blank = True, null = True)
     contenido = models.TextField('Contenido',blank = True, null = True)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
@@ -25,6 +25,9 @@ class Evento(models.Model):
 
     def __unicode__(self):
         return self.titulo
+
+    def get_full_url(self):
+        return "/eventos/evento/%s/" % self.slug
 
     class Meta:
         verbose_name = "Evento"
@@ -38,6 +41,12 @@ class Evento(models.Model):
             self.slug = str(n) + '-' + slugify(self.titulo)
         super(Evento, self).save(force_insert, force_update)
 
+    #override del metodo delete para eliminar el objeto de las tags tambien
+    def delete(self):
+        taggedItem = TaggedItem.objects.get(object_id=self.id)
+        taggedItem.delete()
+        super(Evento, self).delete()
+
     #Para jalar las tags
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)
@@ -47,7 +56,7 @@ class Evento(models.Model):
 
     #metodo url del objeto
     def get_full_url(self):
-        return "/eventos/%s/" % self.slug
+        return "/eventos/evento/%s/" % self.slug
 
     #metodo para obtener el nombre del objeto
     def get_name(self):

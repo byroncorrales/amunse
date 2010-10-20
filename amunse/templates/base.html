@@ -27,9 +27,9 @@ $(document).ready(function(){
   <div id="barra_superior" >
     <div id="contenedor_barra_superior" class="centro">
         <a href="/"><img src="{{MEDIA_URL}}/imagen/titulo.jpg"></a>
-        <form action="#" method="post">
+        <form action="/busqueda/" method="get">
             <div>
-                 <input type="text" name="name" id="busqueda" value=""/>
+                 <input type="text" name="q" id="busqueda" value=""/>
             </div>
         </form>
     </div>

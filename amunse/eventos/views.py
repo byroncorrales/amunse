@@ -9,8 +9,8 @@ from models import *
 
 def index(request):
     '''Vista general de los eventos'''
-    evento_list = Evento.objects.all()
-    paginator = Paginator(evento_list, 3)
+    evento_list = Evento.objects.all().order_by('-fecha_inicio')
+    paginator = Paginator(evento_list, 4)
 
     try:
         page = int(request.GET.get('page', '1'))
@@ -43,9 +43,13 @@ def calendario(request):
         eventos = Evento.objects.filter(fecha_inicio__range=(fecha1, fecha2))
         var = []        
         for evento in eventos:
+            if evento.lugar:
+                titulo = evento.titulo + ' en ' + evento.lugar
+            else:
+                titulo = evento.titulo
             d = {
                  'id': str(evento.id),
-                 'title':'%s en %s' % (evento.titulo, evento.lugar), 
+                 'title':str(titulo), 
                  'start':str(evento.fecha_inicio), 
                  'end':str(evento.fecha_final), 
                  'allDay': False,

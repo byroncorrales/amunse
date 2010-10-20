@@ -1,4 +1,4 @@
-# "Hey, Django! Look at me, I'm an app! For Serious!"
+# -*- coding: UTF-8 -*-
 import logging
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models

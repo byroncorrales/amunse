@@ -40,10 +40,25 @@ $(document).ready(function() {
                 <b>Categoria: </b><a href="/noticias/categoria/{{noticia.categoria.slug}}">{{noticia.categoria.nombre}}</a><br>
             </div>
             {%if noticia.imagen %}<img src="{{noticia.imagen.url_255x190}}">{%endif%}
-            
+            {%if noticia.adjunto.all %}
+            <div id="archivos_adjuntos">
+                <b>Archivos Adjuntos</b>
+                    {%for adjunto in noticia.adjunto.all%}
+                        <a href="/archivos/{{adjunto.adjunto}}">{{adjunto.nombre}}</a>
+                    {%endfor%}
+            </div>
+            {%endif%}
         </div>
-        {{noticia.contenido|safe}}
+        <div id="contenido_pagina">
+            {{noticia.contenido|safe}}
+        </div>
         <br>
+        <div id="noticias_relacionadas" class="izq">
+        <b>Noticias Relacionadas</b><br>
+            {% for noticia_rel in noticia_rel %}
+                <a href="/noticias/{{noticia_rel.slug}}">{{noticia_rel.titulo}}</a>
+            {%endfor%}
+        </div>
         <div id="etiquetas" class="der">
             {% if noticia.tags %}
                 <b>Etiquetas: </b><br>
@@ -52,27 +67,30 @@ $(document).ready(function() {
                 {% endfor %}
             {%endif%}
         </div>
-        <div id="comment_form">
-        {% render_comment_form for noticia %}
-        </div>
-        {% get_comment_count for noticia as comment_count %}
+        <div class="separador"></div>
+        <div id="comentarios_lista" class="izq">
+            <br>
+            <b>Comentarios</b>
+            {% get_comment_count for noticia as comment_count %}
 
-        <p>Esta entrada tiene {{ comment_count }} comentarios.</p>
-        {% get_comment_list for noticia as comment_list %}
-        {% for comment in comment_list %}
-        {% gravatar comment.user_email 48 %}
-        {%if comment.user_url%}
-        <p><a href="{{comment.user_url}}">{{comment.user_name}}</a> publicó el {{comment.submit_date}}:</p>
-        {%else%}
-        <p>{{comment.user_name}} publicó el {{comment.submit_date}}:</p>
-        {%endif%}
-        <p>{{comment.comment}}</p>
-        {% endfor %}
-        <div id="noticias_relacionadas" class="izq">
-        <b>Noticias Relacionadas</b><br>
-            {% for noticia_rel in noticia_rel %}
-                <a href="/noticias/{{noticia_rel.slug}}">{{noticia_rel.titulo}}</a>
-            {%endfor%}
+            <p><i>Esta entrada tiene {{ comment_count }} comentarios.</i></p>
+            {% get_comment_list for noticia as comment_list %}
+            {% for comment in comment_list %}
+                <div class="comentario">
+                    {% gravatar comment.user_email 48 %}
+                    {%if comment.user_url%}
+                        <p><a href="{{comment.user_url}}">{{comment.user_name}}</a><br> publicó el {{comment.submit_date|date:"n M Y"}}:</p></br style="clear:both">
+                    {%else%}
+                        <p>{{comment.user_name}}<br> publicó el {{comment.submit_date|date:"n M Y"}}:</p></br style="clear:both">
+                    {%endif%}
+                    <p>{{comment.comment}}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div id="comment_form" class="der">
+            <br>
+            <b>Envia tu comentario</b>
+            {% render_comment_form for noticia %}
         </div>
 
     {%endblock %}

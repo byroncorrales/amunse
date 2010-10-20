@@ -8,14 +8,18 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Changing field 'Adjunto.adjunto'
-        db.alter_column('multimedia_adjunto', 'adjunto', self.gf('amunse.multimedia.customfilefield.ContentTypeRestrictedFileField')(max_length=100))
+        # Adding model 'ImagenAdjunta'
+        db.create_table('multimedia_imagenadjunta', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('imagen', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+        ))
+        db.send_create_signal('multimedia', ['ImagenAdjunta'])
 
 
     def backwards(self, orm):
         
-        # Changing field 'Adjunto.adjunto'
-        db.alter_column('multimedia_adjunto', 'adjunto', self.gf('django.db.models.fields.files.FileField')(max_length=100))
+        # Deleting model 'ImagenAdjunta'
+        db.delete_table('multimedia_imagenadjunta')
 
 
     models = {
@@ -33,6 +37,11 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'nombre': ('django.db.models.fields.CharField', [], {'max_length': '150'}),
             'object_id': ('django.db.models.fields.IntegerField', [], {'db_index': 'True'})
+        },
+        'multimedia.imagenadjunta': {
+            'Meta': {'object_name': 'ImagenAdjunta'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'imagen': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'})
         }
     }
 

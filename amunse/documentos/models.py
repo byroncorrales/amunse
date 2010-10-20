@@ -2,7 +2,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from tagging.fields import TagField
-from tagging.models import Tag
+from tagging.models import *
 from tagging_autocomplete.models import TagAutocompleteField
 from customfilefield import ContentTypeRestrictedFileField
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
@@ -78,6 +78,12 @@ class Archivo(models.Model):
             n = Archivo.objects.all().count()
             self.slug = str(n) + '-' + slugify(self.nombre)
         super(Archivo, self).save(force_insert, force_update)
+
+    #override del metodo delete para eliminar el objeto de las tags tambien
+    def delete(self):
+        taggedItem = TaggedItem.objects.get(object_id=self.id)
+        taggedItem.delete()
+        super(Archivo, self).delete()
 
     #Para jalar las tags
     def set_tags(self, tags):

@@ -1,0 +1,15 @@
+{%extends "interna.html"%}
+{%block extra_header%}
+{%endblock%}
+
+    {%block cuerpo%}
+        <h2>{{pagina.titulo}}</h2>
+
+        <div id="contenido_pagina">
+
+        {{pagina.contenido|safe}}
+        </div>
+        <br>        
+
+
+    {%endblock %}

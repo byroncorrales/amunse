@@ -12,6 +12,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 SITE_ID = 1
 USE_I18N = True
 ADMIN_MEDIA_PREFIX = '/archivos/admin/'
+#localize=True
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',

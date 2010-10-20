@@ -1,9 +1,10 @@
 from haystack.indexes import *
 from haystack import site
 from models import Noticia 
+import datetime
 
 class NoticiaIndex(SearchIndex):
-    contenido = CharField(document=True, use_template=True)
+    text = CharField(document=True, use_template=True)
     titulo = CharField(model_attr='title')
     fecha = DateField(model_attr='fecha')
 
