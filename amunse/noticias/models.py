@@ -69,6 +69,6 @@ class Noticia(models.Model):
     #metodo para obtener el nombre del objeto
     def get_name(self):
         return self.titulo
-    
+
 #    def categorias(self):
 #        return self.Noticia.all()[0].categoria.nombre

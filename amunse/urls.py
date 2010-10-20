@@ -19,11 +19,12 @@ urlpatterns = patterns('',
     (r'^videos/', include('videos.urls')),
     (r'^eventos/', include('eventos.urls')),
     (r'^tags/(?P<id>\d+)$', 'paginas.views.tags'),
+    (r'^busqueda/', include('haystack.urls')),
     (r'^$', 'paginas.views.inicio'),
     (r'^admin/filebrowser/', 'amunse.multimedia.views.subir_imagen'),
     # Uncomment the next line to enable the admin:
-     (r'^admin/', include(admin.site.urls)),
-     (r'^tagging_autocomplete/', include('tagging_autocomplete.urls')),
+    (r'^admin/', include(admin.site.urls)),
+    (r'^tagging_autocomplete/', include('tagging_autocomplete.urls')),
 )
 
 

@@ -66,3 +66,6 @@ class Proyecto(models.Model):
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.nombre)
         super(Proyecto, self).save(force_insert, force_update)
+
+    #def get_full_url(self):
+    #    return "/paginas/%s/" % self.slug

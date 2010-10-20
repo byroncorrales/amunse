@@ -30,8 +30,12 @@ class Boletin(models.Model):
     def get_absolute_url(self):
         return '%s%s/%s' % (settings.MEDIA_URL, 
                          settings.ATTACHMENT_FOLDER, self.id)
+
     def get_download_url(self):
         return '%s%s' % (settings.MEDIA_URL, self.adjunto)
+
+    def get_full_url(self):
+        return '/boletines/%s/' % self.slug 
         
     class Meta:
         verbose_name = "Boletín"

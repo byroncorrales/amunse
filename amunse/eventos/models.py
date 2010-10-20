@@ -26,6 +26,9 @@ class Evento(models.Model):
     def __unicode__(self):
         return self.titulo
 
+    def get_full_url(self):
+        return "/eventos/evento/%s/" % self.slug
+
     class Meta:
         verbose_name = "Evento"
         verbose_name_plural = "Eventos"
@@ -53,7 +56,7 @@ class Evento(models.Model):
 
     #metodo url del objeto
     def get_full_url(self):
-        return "/eventos/%s/" % self.slug
+        return "/eventos/evento/%s/" % self.slug
 
     #metodo para obtener el nombre del objeto
     def get_name(self):
