@@ -1,0 +1,61 @@
+{%extends "interna.html"%}
+ {%block title%}{{m.nombre}}{%endblock%}
+{%block extra_header%}
+	
+<script type="text/javascript"> 
+$(document).ready(function() {
+    $("#caracterizacion").show();
+    $("#historia").hide();
+    $("#ubicacion").hide();
+    
+    $("#caracterizacion_e").click(function(){
+        $("#caracterizacion").show();
+        $("#historia").hide();
+        $("#ubicacion").hide();
+        return false;
+    });
+    
+    $("#historia_e").click(function(){
+        $("#caracterizacion").hide();
+        $("#historia").show();
+        $("#ubicacion").hide();
+        return false;
+    });
+
+    $("#ubicacion_e").click(function(){
+        $("#caracterizacion").hide();
+        $("#historia").hide();
+        $("#ubicacion").show();
+        return false;
+    });
+});
+</script>
+{%endblock%}
+
+    {%block cuerpo%}
+        <h2>Municipio de {{m.nombre}}</h2>
+        <div id="acciones_municipio">
+            <a id ="caracterizacion_e" href="#">Caracterización</a>
+            <a id ="ubicacion_e" href="#">Ubicación</a>
+            <a id ="historia_e" href="#">Historia</a>
+            <a href="/eventos">Documentos</a>
+        </div>
+
+        <div id="contenido_pagina">
+            <div id="caracterizacion">
+                <b>CARACTERIZACION</b>
+                {{m.caracterizacion|safe}}
+            </div>
+            <div id="ubicacion">
+                <b>UBICACION</b>
+                {{m.ubicacion|safe}}
+            </div>
+            <div id="historia">
+                <b>HISTORIA</b>
+                {{m.historia|safe}}
+            </div>
+        </div>
+        <br>        
+
+
+    {%endblock %}

@@ -4,7 +4,7 @@ from django.template.defaultfilters import slugify
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from tagging.fields import TagField
-from tagging.models import *
+from tagging.models import Tag
 from thumbs import ImageWithThumbsField
 from tagging_autocomplete.models import TagAutocompleteField
 from customfilefield import ContentTypeRestrictedFileField

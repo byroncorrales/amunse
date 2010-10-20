@@ -8,7 +8,7 @@
                <img src="{{boletin.imagen.url_80x100}}">
                <div class="titulo"><a href="/boletines/{{boletin.slug}}/">{{boletin.titulo}}</a></div>
                <div id="fechas">
-                   <b>Fecha de publicación:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{boletin.fecha|date:"n M Y"}} 
+                   <b>Fecha de publicación:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{boletin.fecha|date:"d M Y"}} 
                </div>
                <br><br>
                <div class="seguir_leyendo izq"><a class="con_flechita" href="/boletines/{{boletin.slug}}/">Mas información</a></div>
