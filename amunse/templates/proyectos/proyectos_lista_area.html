@@ -1,0 +1,38 @@
+ {%extends "interna.html"%}
+ {%block extra_header%}
+ {%endblock%}
+
+    {%block cuerpo%}
+        <h2>Proyectos de area {{area.nombre}}</h2>
+        
+        <div class="lista">
+            <br>
+            {%for proyecto in proyectos.object_list%}
+            <div class="elemento_lista">
+                    <div class="titulo"><a href="/proyectos/{{proyecto.slug}}">{{proyecto.nombre}}</a></div>
+                    <div class="categoria_noticia der">
+                    <b>Area:</b> 
+                    <i>{{area.nombre}}</i>
+                    </div>
+                    <div class="separador"></div>
+            </div>
+            {%endfor%}
+            <div class="paginacion">
+                <span class="pagina-links">
+                {% if proyectos.has_previous %}
+                <a href="?page={{ proyectos.previous_page_number }}" class="pag_izq">Anterior</a>
+                {% endif %}
+
+                <span class="actual">
+                    Página {{ proyectos.number }} de {{ proyectos.paginator.num_pages }}.
+                </span>
+
+                {% if proyectos.has_next %}
+                    <a href="?page={{ proyectos.next_page_number }}" class="pag_der">Siguiente</a>
+                {% endif %}
+                </span>
+            </div>
+        </div>
+    {%endblock %}
+
+ 

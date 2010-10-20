@@ -38,20 +38,20 @@ $(document).ready(function() {
             <a id ="caracterizacion_e" href="#">Caracterización</a>
             <a id ="ubicacion_e" href="#">Ubicación</a>
             <a id ="historia_e" href="#">Historia</a>
-            <a href="/eventos">Documentos</a>
+            <a href="/documentos/{{m.documentacion.categoria.slug}}/{{m.documentacion.slug}}">Documentos</a>
         </div>
 
         <div id="contenido_pagina">
             <div id="caracterizacion">
-                <b>CARACTERIZACION</b>
+                <p><b>CARACTERIZACION</b></p>
                 {{m.caracterizacion|safe}}
             </div>
             <div id="ubicacion">
-                <b>UBICACION</b>
+                <p><b>UBICACION</b></p>
                 {{m.ubicacion|safe}}
             </div>
             <div id="historia">
-                <b>HISTORIA</b>
+                <p><b>HISTORIA</b></p>
                 {{m.historia|safe}}
             </div>
         </div>

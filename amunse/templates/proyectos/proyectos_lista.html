@@ -1,0 +1,62 @@
+ {%extends "interna.html"%}
+ {%block extra_header%}
+<script type="text/javascript">
+    function mandacategoria(form){
+        var area_slug = form.area.value;
+            if (area_slug){
+                var url="/proyectos/area/" + area_slug;
+            }else
+            {
+                var url="/proyectos/";
+            }
+        window.location = url;
+    }
+</script>
+ {%endblock%}
+    {%block cuerpo%}
+        <h2>Proyectos</h2>
+        <div id="acciones">
+            <form name="formulario" action="" method="get">
+                        <div class="label">Categorias </div>
+                        <select id="id_categoria" name="area" >  
+                            <option value="">-------</option>
+                            {%for area in area%}
+                            <option value="{{area.slug}}">{{area.nombre}}</option>
+                            {%endfor%}
+                        <input id="id_boton" type="button" value="Filtrar" onClick="mandacategoria(this.form)"/>
+            </form>
+        </div>
+        
+        <div class="lista">
+            {%for proyecto in proyectos.object_list%}
+            <div class="elemento_lista">
+                    <div class="titulo"><a href="/proyectos/{{proyecto.slug}}">{{proyecto.nombre}}</a></div>
+                    <div class="categoria_noticia der">
+                    <b>Areas:</b> 
+                    <i>{%for area in proyecto.area.all%}
+                            <a href="/proyectos/area/{{area.slug}}">{{area}}</a> | 
+                        {%endfor%}
+                    </i>
+                    </div>
+                    <div class="separador"></div>
+            </div>
+            {%endfor%}
+            <div class="paginacion">
+                <span class="pagina-links">
+                {% if proyectos.has_previous %}
+                <a href="?page={{ proyectos.previous_page_number }}" class="pag_izq">Anterior</a>
+                {% endif %}
+
+                <span class="actual">
+                    Página {{ proyectos.number }} de {{ proyectos.paginator.num_pages }}.
+                </span>
+
+                {% if proyectos.has_next %}
+                    <a href="?page={{ proyectos.next_page_number }}" class="pag_der">Siguiente</a>
+                {% endif %}
+                </span>
+            </div>
+        </div>
+    {%endblock %}
+
+ 
