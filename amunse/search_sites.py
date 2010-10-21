@@ -1,2 +1,2 @@
-import haystack
+from amunse import haystack
 haystack.autodiscover()
