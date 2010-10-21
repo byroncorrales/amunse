@@ -15,6 +15,7 @@ class PaginaAdmin(admin.ModelAdmin):
 #    inlines = [AdjuntoInline,]
     save_on_top = True
     date_hierarchy = 'fecha'
+    list_per_page = 12
 
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
@@ -28,6 +29,7 @@ class MenuSecundarioAdmin(admin.ModelAdmin):
     list_display = ['titulo','menuprimario', 'orden','pagina','url']
     search_fields = ['titulo']
     list_filter = ['menuprimario']
+    list_per_page = 12
 
 admin.site.register(Pagina, PaginaAdmin)
 admin.site.register(MenuPrimario, MenuPrimarioAdmin)

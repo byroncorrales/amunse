@@ -15,6 +15,7 @@ class EventoAdmin(admin.ModelAdmin):
     inlines = [AdjuntoInline,]
     save_on_top = True
     date_hierarchy = 'fecha_inicio'
+    list_per_page = 12
     
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',

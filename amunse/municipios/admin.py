@@ -7,6 +7,7 @@ from municipios.models import *
 class MunicipioAdmin(admin.ModelAdmin):
     list_display = ['nombre']
     search_fields = ['nombre']
+    list_per_page = 12
     save_on_top = True
 
     class Media:
