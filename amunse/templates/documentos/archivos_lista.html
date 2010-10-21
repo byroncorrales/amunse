@@ -6,7 +6,7 @@
         {%for archivo in archivo%}
         <div class="elemento_lista">
                 <b><a href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/{{archivo.slug}}">{{archivo.nombre}}</a></b><br>
-                {{archivo.adjunto.size}}
+                {{archivo.adjunto.size|filesizeformat}}
         </div>
         {%endfor%}
     </div>
