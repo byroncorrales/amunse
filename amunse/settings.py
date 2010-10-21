@@ -2,7 +2,7 @@
 
 from settings_local import *
 
-DEBUG = True 
+
 TEMPLATE_DEBUG = DEBUG
 DEFAULT_CHARSET = 'utf-8'
 MANAGERS = ADMINS

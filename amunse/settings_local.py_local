@@ -1,5 +1,5 @@
 import os 
-
+DEBUG = True 
 SITE_URL = 'localhost'
 SITE_ROOT= os.path.dirname(__file__)
 ADMINS = (('Tu nombre', 'nombre@foo.org'),)
