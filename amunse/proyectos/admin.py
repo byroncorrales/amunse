@@ -5,16 +5,19 @@ from django.contrib.contenttypes import generic
 class FinanciadorAdmin(admin.ModelAdmin):
     list_display = ['nombre']
     search_fields = ['nombre']
+    list_per_page = 12
 
 
 class AreaAdmin(admin.ModelAdmin):
     list_display = ['nombre']
     search_fields = ['nombre']
+    list_per_page = 12
 
 class ProyectoAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ['nombre', 'estado']
     list_filter = ['estado']
+    list_per_page = 12
     search_fields = ['nombre']
     filter_horizontal = ('financiador','area')
     fieldsets = [

@@ -11,6 +11,7 @@ class BoletinAdmin(admin.ModelAdmin):
     search_fields = ['titulo']
     save_on_top = True
     date_hierarchy = 'fecha'
+    list_per_page = 12
     #actions = ['delete_selected']
 
     #def delete_selected(self, request, queryset):

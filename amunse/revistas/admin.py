@@ -8,6 +8,7 @@ class RevistaAdmin(admin.ModelAdmin):
     search_fields = ['titulo']
     save_on_top = True
     date_hierarchy = 'fecha'
+    list_per_page = 12
 
 admin.site.register(Revista, RevistaAdmin)
 

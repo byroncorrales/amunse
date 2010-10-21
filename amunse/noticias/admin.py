@@ -6,6 +6,7 @@ from amunse.multimedia.models import Adjunto #importando el modelo de adjuntos g
 class CategoriaNoticiaAdmin(admin.ModelAdmin):
     list_display = ['nombre']
     list_filter = ['nombre']
+    list_per_page = 12
 
 class AdjuntoInline(generic.GenericStackedInline):
     model = Adjunto
@@ -19,6 +20,7 @@ class NoticiaAdmin(admin.ModelAdmin):
     inlines = [AdjuntoInline,]
     save_on_top = True
     date_hierarchy = 'fecha'
+    list_per_page = 12
     
     class Media:
         js = ['../archivos/js/tiny_mce/tiny_mce.js',
