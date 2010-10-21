@@ -920,6 +920,25 @@ margin-bottom:10px;
 
 }
 
+.icon_carpeta img{
+    padding:0px;
+    background:none;
+}
+
+.icon_carpeta{
+    float:left;
+    margin-right:10px;
+}
+
+.carpeta_texto{
+    width:500px;
+    padding-top:5px;
+}
+
+.carpeta_texto_sub{
+    width:530px;
+    padding-top:5px;
+}
 /* Termina Contenido*/
 
 /* Comienza Footer */

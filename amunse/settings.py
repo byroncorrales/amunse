@@ -31,6 +31,7 @@ MIDDLEWARE_CLASSES = (
 
 MEDIA_ROOT = os.path.join(SITE_ROOT,'media')
 MEDIA_URL = '/archivos/'
+#MEDIA_URL = ''
 TEMPLATE_DIRS = (
 SITE_ROOT+"/templates",
 )

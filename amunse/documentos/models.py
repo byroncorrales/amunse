@@ -79,12 +79,6 @@ class Archivo(models.Model):
             self.slug = str(n) + '-' + slugify(self.nombre)
         super(Archivo, self).save(force_insert, force_update)
 
-    #override del metodo delete para eliminar el objeto de las tags tambien
-    def delete(self):
-        taggedItem = TaggedItem.objects.get(object_id=self.id)
-        taggedItem.delete()
-        super(Archivo, self).delete()
-
     #Para jalar las tags
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)

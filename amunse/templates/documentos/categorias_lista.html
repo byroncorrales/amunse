@@ -1,0 +1,19 @@
+{%extends "interna.html"%}
+{%block title%}Documentos{%endblock%}
+{%block cuerpo%}
+    <h2>Area de Documentación</h2>
+    <div id="lista">
+        {%for categoria in categoria%}
+        <div class="elemento_lista">
+                <div class="icon_carpeta">
+                    <a href="/documentos/{{categoria.slug}}"><img src="{{MEDIA_URL}}imagen/icon_carpeta.jpg"></a>
+                </div>
+                <div class="carpeta_texto der">
+                <b><a href="/documentos/{{categoria.slug}}">{{categoria.nombre}}</a></b><br>
+                {{categoria.descripcion}}
+                </div>
+                <div class="separador"></div>
+        </div>
+        {%endfor%}
+    </div>
+{%endblock %}

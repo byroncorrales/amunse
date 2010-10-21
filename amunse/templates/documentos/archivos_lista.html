@@ -1,0 +1,13 @@
+{%extends "interna.html"%}
+{%block title%}Documentos{%endblock%}
+{%block cuerpo%}
+    <h2>Documentos: {{subcategoria.nombre}}</h2>
+    <div id="lista">
+        {%for archivo in archivo%}
+        <div class="elemento_lista">
+                <b><a href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/{{archivo.slug}}">{{archivo.nombre}}</a></b><br>
+                {{archivo.adjunto.size}}
+        </div>
+        {%endfor%}
+    </div>
+{%endblock %}

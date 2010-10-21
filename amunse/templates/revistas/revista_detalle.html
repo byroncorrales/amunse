@@ -16,7 +16,6 @@
                <a href="/archivos/{{revista.revista}}"><img src="{{MEDIA_URL}}imagen/descargar.jpg"></a>
 
         <div id="etiquetas" class="der">
-        {{revista.tags}}
             {% if revista.tags %}
                 <b>Etiquetas: </b><br>
                 {% for tag in revista.get_tags %}
