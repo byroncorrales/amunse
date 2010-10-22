@@ -8,7 +8,7 @@ class NoticiasFeed(Feed):
     description = 'Noticias mas recientes de AMUNSE'
     
     def items(self):
-        return Noticia.objects.order_by('-fecha')
+        return Noticia.objects.order_by('-fecha')[:10]
 
     def item_title(self, item):
         return item.titulo
