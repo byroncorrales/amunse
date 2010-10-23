@@ -32,3 +32,11 @@ def archivo_lista(request,slug_cat, slug_subcat):
     dicc = {'archivo': archivo_lista, 'subcategoria':subcategoria,
            }
     return direct_to_template(request, 'documentos/archivos_lista.html',dicc)
+
+def archivo_detalle(request,slug_cat, slug_subcat):
+    '''Muestra el dta'''
+    archivo_lista = Archivo.objects.filter(subcategoria__slug=slug_subcat).order_by('nombre')
+    subcategoria = get_object_or_404(SubCategoriaDocumento, slug=slug_subcat)
+    dicc = {'archivo': archivo_lista, 'subcategoria':subcategoria,
+           }
+    return direct_to_template(request, 'documentos/archivos_lista.html',dicc)

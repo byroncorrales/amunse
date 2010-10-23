@@ -7,6 +7,9 @@
         <div class="elemento_lista">
                 <b><a href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/{{archivo.slug}}">{{archivo.nombre}}</a></b><br>
                 {{archivo.adjunto.size|filesizeformat}}
+               <div class="seguir_leyendo der"><a class="con_flechita" href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/{{archivo.slug}}">Mas información</a></div>
+               <div class="seguir_leyendo der"><a class="con_flechita" href="/archivos/{{archivo.adjunto}}">Descargar</a></div><br>
+               <div class="separador"></div>
         </div>
         {%endfor%}
     </div>
