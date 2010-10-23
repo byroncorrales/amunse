@@ -9,7 +9,6 @@ from customfilefield import ContentTypeRestrictedFileField
 from south.modelsinspector import add_introspection_rules
 add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"]) 
 
-
 # modelos para la administracion de archivos 
 
 class CategoriaDocumento(models.Model):

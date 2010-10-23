@@ -3,7 +3,7 @@
 {%block cuerpo%}
     <h2>Documentos: {{subcategoria.nombre}}</h2>
     <div id="lista">
-        {%for archivo in archivo%}
+        {%for archivo in archivos.object_list%}
         <div class="elemento_lista">
                 <b><a href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/{{archivo.slug}}">{{archivo.nombre}}</a></b><br>
                 {{archivo.adjunto.size|filesizeformat}}
@@ -12,5 +12,18 @@
                <div class="separador"></div>
         </div>
         {%endfor%}
-    </div>
+        <div class="paginacion">
+               <span class="pagina-links">
+                   {%if archivos.has_previous%}
+                   <a href="?page={{ archivos.previous_page_number }}" class="pag_izq">anterior</a>
+                   {%endif%}
+                   <span class="actual">
+                       Página {{ archivos.number }} de {{ archivos.paginator.num_pages }}.
+                   </span>
+                   {%if eventos.has_next%}
+                   <a href="?page={{ archivos.next_page_number }}" class="pag_der">siguiente</a>
+                   {%endif%}
+               </span>
+           </div>
+        </div>
 {%endblock %}
