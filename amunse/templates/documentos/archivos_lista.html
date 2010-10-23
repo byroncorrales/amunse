@@ -20,7 +20,7 @@
                    <span class="actual">
                        Página {{ archivos.number }} de {{ archivos.paginator.num_pages }}.
                    </span>
-                   {%if eventos.has_next%}
+                   {%if archivos.has_next%}
                    <a href="?page={{ archivos.next_page_number }}" class="pag_der">siguiente</a>
                    {%endif%}
                </span>

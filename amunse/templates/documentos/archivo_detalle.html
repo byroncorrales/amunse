@@ -2,23 +2,23 @@
 {%block extra_header%}
 {%endblock%}
 {%block cuerpo%}
-    <h2>{{boletin.titulo}}</h2>
+    <h2>Documentos: {{subcategoria.nombre}}</h2>
        
        <div id="lista">
            <div id="elemento_lista">
-               <img src="{{boletin.imagen.url_190x230}}" class="der">
+               <b>Nombre del Archivo: </b>{{archivo.nombre}}<br><br>
                <div id="fechas">
-                   <b>Fecha de publicación:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{boletin.fecha|date:"d M Y"}}
+                   <b>Fecha de publicación:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{archivo.fecha|date:"d M Y"}}
                </div>
                <br>
-               {%if boletin.edicion %}<b>Edicion No: </b>{{boletin.edicion}}<br><br>{%endif%}
+               {%if archivo.descripcion %}<b>Descripción: </b>{{archivo.descripcion}}<br><br>{%endif%}
                {%if boletin.descripcion %}{{boletin.descripcion|safe}}<br>{%endif%}<br>
-               <a href="/archivos/{{boletin.boletin}}"><img src="{{MEDIA_URL}}imagen/descargar.jpg"></a>
+               <a href="/archivos/{{archivo.adjunto}}"><img src="{{MEDIA_URL}}imagen/descargar.jpg"></a>
 
         <div id="etiquetas" class="der">
-            {% if boletin.tags %}
+            {% if archivo.tags %}
                 <b>Etiquetas: </b><br>
-                {% for tag in boletin.get_tags %}
+                {% for tag in archivo.get_tags %}
                 <a href="/tags/{{tag.id}}">{{tag}}</a>
                 {% endfor %}
             {%endif%}

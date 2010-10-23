@@ -27,15 +27,14 @@ def subcategoria_lista(request,slug_cat):
 
 def archivo_lista(request,slug_cat, slug_subcat):
     '''Muestra la lista de archivos basado en una subcategoria'''
-    archivo_lista = Archivo.objects.filter(subcategoria__slug=slug_subcat).order_by('nombre')
+    archivo_lista = Archivo.objects.filter(subcategoria__slug=slug_subcat).order_by('-fecha')
     subcategoria = get_object_or_404(SubCategoriaDocumento, slug=slug_subcat)
-    paginator = Paginator(archivo_lista, 2)
+    paginator = Paginator(archivo_lista, 10)
 
     try:
         page = int(request.GET.get('page', '1'))
     except ValueError:
         page = 1
-
     try:
         archivo = paginator.page(page)
     except (EmptyPage, InvalidPage):
@@ -46,9 +45,9 @@ def archivo_lista(request,slug_cat, slug_subcat):
 
 def archivo_detalle(request,slug_cat, slug_subcat, archivo_slug):
     '''Muestra el detalle de los documentos'''
-    archivo = get_object_or_404(Archivo,slug=archivo_slug).order_by('-fecha')
+    archivo = get_object_or_404(Archivo,slug=archivo_slug)
     subcategoria = get_object_or_404(SubCategoriaDocumento, slug=slug_subcat)
 
     dicc = {'archivo': archivo, 'subcategoria':subcategoria,
            }
-    return direct_to_template(request, 'documentos/archivos_detalle.html',dicc)
+    return direct_to_template(request, 'documentos/archivo_detalle.html',dicc)
