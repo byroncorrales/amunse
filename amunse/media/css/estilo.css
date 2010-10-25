@@ -1075,6 +1075,11 @@ display:block;
     margin-top:-12px;
 }
 
+#footer a, #footer a:visited{
+    color:#fff;
+    
+}
+
 
 
 

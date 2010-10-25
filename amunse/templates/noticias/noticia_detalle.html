@@ -2,6 +2,16 @@
 {%load comments%}
 {%load gravatar%}
 {%block extra_header%}
+<link href="{{MEDIA_URL}}css/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="{{MEDIA_URL}}js/facebox.js" type="text/javascript"></script>
+<script type="text/javascript">
+ jQuery(document).ready(function($) {
+   $('a[rel*=facebox]').facebox({
+       loading_image : '{{MEDIA_URL}}imagen/loading.gif',
+       close_image   : '{{MEDIA_URL}}imagen/closelabel.gif'
+     }); 
+});
+</script>
 <script type="text/javascript" charset="utf-8">  
 function bindPostCommentHandler() {  
     $('#comment_form form input.submit-preview').remove();  
@@ -41,7 +51,7 @@ $(document).ready(function() {
                 <b>Fecha: </b>{{noticia.fecha|date:"d M Y"}}<br>
                 <b>Categoria: </b><a href="/noticias/categoria/{{noticia.categoria.slug}}">{{noticia.categoria.nombre}}</a><br>
             </div>
-            {%if noticia.imagen %}<img src="{{noticia.imagen.url_255x190}}">{%endif%}
+            {%if noticia.imagen %}<a href="/archivos/{{noticia.imagen}}" rel="facebox"><img src="{{noticia.imagen.url_255x190}}"></a>{%endif%}
             {%if noticia.adjunto.all %}
             <div id="archivos_adjuntos">
                 <b>Archivos Adjuntos</b>
@@ -61,14 +71,14 @@ $(document).ready(function() {
                 <a href="/noticias/{{noticia_rel.slug}}">{{noticia_rel.titulo}}</a>
             {%endfor%}
         </div>
-        <div id="etiquetas" class="der">
-            {% if noticia.tags %}
-                <b>Etiquetas: </b><br>
-                {% for tag in noticia.get_tags %}
-                <a href="/tags/{{tag.id}}">{{tag}}</a>
-                {% endfor %}
-            {%endif%}
-        </div>
+        {% if noticia.tags %}
+            <div id="etiquetas" class="der">
+                    <b>Etiquetas: </b><br>
+                    {% for tag in noticia.get_tags %}
+                    <a href="/tags/{{tag.id}}">{{tag}}</a>
+                    {% endfor %}
+            </div>
+        {%endif%}
         <div class="separador"></div>
         <div id="comentarios_lista" class="izq">
             <br>

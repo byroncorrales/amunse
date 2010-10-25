@@ -6,6 +6,7 @@
     <title>{%block title%}{%endblock%} AMUNSE</title>
     <link href="{{MEDIA_URL}}css/estilo.css" rel="stylesheet" type="text/css" media="screen" />
     <script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.4.2.min.js"></script>
+    <link REL="SHORTCUT ICON" HREF="{{MEDIA_URL}}/imagen/favicon.ico">
 	{%block extra_header%}{%endblock%}
 </head>
 <script type="text/javascript">
@@ -78,7 +79,7 @@ $(document).ready(function(){
   <div id ="final_contenedor" class="centro"></div>
   <div id="footer">
     <div id="footer_contenedor" class="centro">
-        <img src="{{MEDIA_URL}}/imagen/hoja.png"><b>AMUNSE</b> Asociación de Municipios de Nueva Segovia | Desarrollado por SIMAS bajo plataforma Django
+        <img src="{{MEDIA_URL}}/imagen/hoja.png"><b>AMUNSE</b> Asociación de Municipios de Nueva Segovia | Desarrollado por <a href="http://www.simas.org.ni">SIMAS</a> bajo plataforma <a href="http://www.djangoproject.org">Django</a>
     </div>
   </div>
 <script type="text/javascript">

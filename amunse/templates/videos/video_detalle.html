@@ -18,7 +18,6 @@
     {%block cuerpo%}
         <h2>Videos</h2>
         <div class="lista">
-                 {% for video in videos.object_list%}
                  <div class="elemento_lista">
                      <div id="video-{{video.id}}">
                      <a href="/videos/popup/{{video.id}}/" rel='facebox' ><img width="276" height="200" id='video-{{video.id}}' class='ythumb' src="{{video.video|youthumbnail:'l'}}"/></a>
@@ -29,23 +28,18 @@
                      
                      </div>
                     <div class="separador"></div>
+                    <br>
+                        <div id="etiquetas" class="izq">
+                            {% if video.tags %}
+                                <b>Etiquetas: </b><br>
+                                {% for tag in video.get_tags %}
+                                <a href="/tags/{{tag.id}}">{{tag}}</a>
+                                {% endfor %}
+                            {%endif%}
+                        </div>
+                    <div class="separador"></div>
                  </div>
-                 {%endfor%}
-            <div class="paginacion">
-                <span class="pagina-links">
-                {% if videos.has_previous %}
-                <a href="?page={{ videos.previous_page_number }}" class="pag_izq">Anterior</a>
-                {% endif %}
 
-                <span class="actual">
-                    Página {{ videos.number }} de {{ videos.paginator.num_pages }}.
-                </span>
-
-                {% if videos.has_next %}
-                    <a href="?page={{ videos.next_page_number }}" class="pag_der">Siguiente</a>
-                {% endif %}
-                </span>
-            </div>
          </div>
     {%endblock %}
 

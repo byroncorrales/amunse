@@ -1,0 +1,31 @@
+ {%extends "base.html"%}
+ {%block extra_header%}
+ {%endblock%}
+ {%block contenido%}
+    <div id="sidebar" class="izq">
+        <a href="/"><img src="{{MEDIA_URL}}/imagen/logito.jpg"></a>
+
+        <div id= "menu_sidebar">
+                <h2>Actualidad</h2>
+                <a href="/noticias">Noticias <img src="{{MEDIA_URL}}/imagen/icono_noticias.png"></a>
+                <a href="/eventos">Eventos <img src="{{MEDIA_URL}}/imagen/icono_evento.png"></a>
+                <a href="/boletines">Boletines <img src="{{MEDIA_URL}}/imagen/icono_boletin.png"></a>
+                <a href="/revistas">Revistas <img src="{{MEDIA_URL}}/imagen/icono_revista.png"></a>
+                <a href="/videos">Videos <img src="{{MEDIA_URL}}/imagen/icono_video.png"></a>
+        </div>
+        <div id="contacto_sidebar">
+                <h2>Contáctenos</h2>
+                    <p>Telefonos : #######
+                    email: ejemplo@algo.com
+                    Nueva Segovia
+                    Nicaragua</p>
+        </div>
+    </div>
+    <div id="cuerpo" class="der">
+    {%block cuerpo%}
+            <h2>Página no encontrada</h2>
+            <img src="{{MEDIA_URL}}imagen/404.jpg"></a>
+    {%endblock %}
+    </div>
+    <div class="separador"></div>
+ {% endblock %}

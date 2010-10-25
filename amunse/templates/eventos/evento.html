@@ -15,6 +15,14 @@
                <div id="contenido_pagina">
                     {%if evento.contenido %}{{evento.contenido|safe}}<br>{%else%}No hay información adicional{%endif%}
                </div>
+                {%if evento.adjunto.all %}
+                <div id="archivos_adjuntos">
+                    <b>Archivos Adjuntos</b>
+                        {%for adjunto in evento.adjunto.all%}
+                            <a href="/archivos/{{adjunto.adjunto}}">{{adjunto.nombre}}</a>
+                        {%endfor%}
+                </div>
+                {%endif%}
            </div>
        </div>
 {%endblock %}
