@@ -65,7 +65,7 @@ class FacetedSearchForm(SearchForm):
 class ModelSearchForm(SearchForm):
     def __init__(self, *args, **kwargs):
         super(ModelSearchForm, self).__init__(*args, **kwargs)
-        self.fields['models'] = forms.MultipleChoiceField(choices=model_choices(), required=False, label=_('Search In'), widget=forms.CheckboxSelectMultiple)
+        self.fields['models'] = forms.MultipleChoiceField(choices=model_choices(), required=False, label=_('Buscar en'), widget=forms.CheckboxSelectMultiple) 
 
     def get_models(self):
         """Return an alphabetical list of model classes in the index."""

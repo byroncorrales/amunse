@@ -2,17 +2,21 @@
 {%block extra_header%}
 {%endblock%}
 {%block cuerpo%}
-    <h2>Documentos: {{subcategoria.nombre}}</h2>
+    <h2>Area de Documentación</h2>
        
        <div id="lista">
+        <div id="acciones_documentos">
+            <a  href="/documentos/">Documentos ></a> 
+            <a  href="/documentos/{{subcategoria.categoria.slug}}/">{{subcategoria.categoria.nombre}}  ></a> 
+            <a  href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/">{{subcategoria.nombre}}  ></a> 
+        </div>
            <div id="elemento_lista">
-               <b>Nombre del Archivo: </b>{{archivo.nombre}}<br><br>
+               <b>Nombre del Archivo: </b><br>{{archivo.nombre}}<br><br>
                <div id="fechas">
-                   <b>Fecha de publicación:</b> <img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{archivo.fecha|date:"d M Y"}}
+                   <b>Fecha de publicación:</b> <br><img src="{{MEDIA_URL}}imagen/icon_fecha.jpg"> {{archivo.fecha|date:"d M Y"}}
                </div>
                <br>
-               {%if archivo.descripcion %}<b>Descripción: </b>{{archivo.descripcion}}<br><br>{%endif%}
-               {%if boletin.descripcion %}{{boletin.descripcion|safe}}<br>{%endif%}<br>
+               {%if archivo.descripcion %}<b>Descripción: </b><br>{{archivo.descripcion}}<br><br>{%endif%}
                <a href="/archivos/{{archivo.adjunto}}"><img src="{{MEDIA_URL}}imagen/descargar.jpg"></a>
 
         <div id="etiquetas" class="der">

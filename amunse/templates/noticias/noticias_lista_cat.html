@@ -9,7 +9,7 @@
             {%for noticia in noticias.object_list%}
             <div class="elemento_lista">
                     {%if noticia.imagen %}<a href="/noticias/{{noticia.slug}}"><img src="{{noticia.imagen.url_178x90}}"></a>{%endif%}
-                    <div class="titulo_noticia"><a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a></div>
+                    <div class="titulo"><a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a></div>
                     {{noticia.contenido|truncatewords_html:50|safe}}
                     <div class="seguir_leyendo izq"><a class="con_flechita" href="/noticias/{{noticia.slug}}">Seguir leyendo</a></div>
                     <div class="categoria_noticia der"><b>Categoria:</b> <i>{{noticia.categoria}}</i></div>

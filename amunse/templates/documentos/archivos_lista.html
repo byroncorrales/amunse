@@ -1,14 +1,19 @@
 {%extends "interna.html"%}
 {%block title%}Documentos{%endblock%}
 {%block cuerpo%}
-    <h2>Documentos: {{subcategoria.nombre}}</h2>
+    <h2>Area de Documentación</h2>
     <div id="lista">
+        <div id="acciones_documentos">
+            <a  href="/documentos/">Documentos ></a> 
+            <a  href="/documentos/{{subcategoria.categoria.slug}}/">{{subcategoria.categoria.nombre}}  ></a> 
+            <a  href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/">{{subcategoria.nombre}}  ></a> 
+        </div>
         {%for archivo in archivos.object_list%}
         <div class="elemento_lista">
-                <b><a href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/{{archivo.slug}}">{{archivo.nombre}}</a></b><br>
+                <span class="titulo_doc"><a href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/{{archivo.slug}}">{{archivo.nombre}}</a></span><br>
                 {{archivo.adjunto.size|filesizeformat}}
                <div class="seguir_leyendo der"><a class="con_flechita" href="/documentos/{{subcategoria.categoria.slug}}/{{subcategoria.slug}}/{{archivo.slug}}">Mas información</a></div>
-               <div class="seguir_leyendo der"><a class="con_flechita" href="/archivos/{{archivo.adjunto}}">Descargar</a></div><br>
+               <div class="seguir_leyendo der"><a class="con_flechita_down" href="/archivos/{{archivo.adjunto}}">Descargar</a></div><br>
                <div class="separador"></div>
         </div>
         {%endfor%}

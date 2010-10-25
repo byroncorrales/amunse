@@ -9,7 +9,7 @@
                     <a href="/documentos/{{categoria.slug}}"><img src="{{MEDIA_URL}}imagen/icon_carpeta.jpg"></a>
                 </div>
                 <div class="carpeta_texto der">
-                <b><a href="/documentos/{{categoria.slug}}">{{categoria.nombre}}</a></b><br>
+                <span class="titulo_doc"><a href="/documentos/{{categoria.slug}}">{{categoria.nombre}} </a>({{categoria.conteo}})</span><br>
                 {{categoria.descripcion}}
                 </div>
                 <div class="separador"></div>

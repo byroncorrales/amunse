@@ -12,7 +12,9 @@
                </div>
                <br>
                {%if evento.lugar %}<b>Lugar: </b>{{evento.lugar}}<br><br>{%endif%}
-               {%if evento.contenido %}{{evento.contenido|safe}}<br>{%else%}No hay información adicional{%endif%}
+               <div id="contenido_pagina">
+                    {%if evento.contenido %}{{evento.contenido|safe}}<br>{%else%}No hay información adicional{%endif%}
+               </div>
            </div>
        </div>
 {%endblock %}

@@ -27,6 +27,11 @@ class CategoriaDocumento(models.Model):
         self.slug = slugify(self.nombre)
         super(CategoriaDocumento, self).save(force_insert, force_update)
 
+    def conteo(self):
+        #Cuenta el numero de archivos en esta categoria
+        conteo = Archivo.objects.filter(subcategoria__categoria__id = self.id).count()
+        return "%s" % str(conteo)
+
 class SubCategoriaDocumento(models.Model):
     '''Modelo que representa la categorias de segundo nivel de los documentos'''
     nombre = models.CharField(max_length = 25, unique = True,blank = True, null = True)
@@ -43,6 +48,11 @@ class SubCategoriaDocumento(models.Model):
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.nombre)
         super(SubCategoriaDocumento, self).save(force_insert, force_update)
+    
+    def conteo(self):
+        #Cuenta el numero de archivos en esta categoria
+        conteo = Archivo.objects.filter(subcategoria__id = self.id).count()
+        return "%s" % str(conteo)
 
 class Archivo(models.Model):
     '''Modelo que representa los archivos que seran subidos a la seccion de documentacion'''
