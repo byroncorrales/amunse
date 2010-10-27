@@ -8,6 +8,7 @@ from thumbs import ImageWithThumbsField
 ESTADO_CHOICES = (
     (1, 'En Desarrollo'),
     (2, 'Terminado'),
+    (3, 'En Gestión'),
 )
 
 class Financiador(models.Model):
