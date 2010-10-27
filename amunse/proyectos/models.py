@@ -13,7 +13,7 @@ ESTADO_CHOICES = (
 class Financiador(models.Model):
     nombre = models.CharField('Financiador', max_length = 150,unique = True,blank = False, null = False)
     slug = models.SlugField(max_length = 150, unique = True,help_text = 'unico Valor',editable=False)
-    logo = ImageWithThumbsField(upload_to='attachments/logos', sizes=((150,150),(250,250)))
+    logo = ImageWithThumbsField(upload_to='attachments/logos', sizes=((150,150),(250,250)), blank = True, null = True)
     enlace = models.URLField('Enlace',verify_exists=True,blank = True, null = True, help_text='ej: http://www.amunse.org.ni')
 
     def __unicode__(self):
