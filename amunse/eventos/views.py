@@ -49,7 +49,7 @@ def calendario(request):
                 titulo = evento.titulo
             d = {
                  'id': str(evento.id),
-                 'title':str(titulo), 
+                 'title': titulo, 
                  'start':str(evento.fecha_inicio), 
                  'end':str(evento.fecha_final), 
                  'allDay': False,
