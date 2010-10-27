@@ -980,6 +980,20 @@ margin-bottom:10px;
 
 }
 
+#contenido_izq ul ul{
+list-style-type: circle;
+list-style-position: inside;
+margin-bottom:10px;
+margin-left:35px;
+}
+
+#contenido_izq ul ul ul{
+list-style-type: circle;
+list-style-position: inside;
+margin-bottom:10px;
+margin-left:45px;
+}
+
 .icon_carpeta img{
     padding:0px;
     background:none;

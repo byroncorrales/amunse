@@ -33,7 +33,7 @@ tinyMCE.init({
 	// Theme options
     skin : "cirkuit",
 	theme_advanced_buttons1 : "bold,italic,underline,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect",
-	theme_advanced_buttons2 : "cut,copy,pastetext,|,bullist,numlist,|,blockquote,|,undo,redo,|,link,unlink,image,code,|,emotions,inserttime,preview,|",
+	theme_advanced_buttons2 : "cut,copy,pastetext,|,bullist,numlist,outdent,indent,|,blockquote,|,undo,redo,|,link,unlink,image,code,|,emotions,inserttime,preview,|",
     theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,charmap,emotions,iespell,advhr,|,fullscreen,",
 	theme_advanced_buttons4 : "",
 	theme_advanced_toolbar_location : "top",
