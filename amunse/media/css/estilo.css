@@ -961,6 +961,10 @@ margin-right:5px;
     margin:5px;
 }
 
+#contenido_pagina b{
+    font-weight:bold;
+}
+
 #contenido_pagina a, #contenido_pagina a:visited{
     color:#333;
     font-weight:bold;
