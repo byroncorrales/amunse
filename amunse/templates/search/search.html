@@ -1,5 +1,10 @@
 {%extends "interna.html"%}
 {%block extra_header%}
+<script type='text/javascript'>
+$(document).ready(function(){
+	$('#id_models_0').parent().parent().parent().parent().parent().css('display', 'none');
+});
+</script>
 {%endblock%}
 
     {%block cuerpo%}

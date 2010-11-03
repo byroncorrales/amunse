@@ -11,6 +11,15 @@
 </head>
 <script type="text/javascript">
 $(document).ready(function(){
+	/************** mouseover del acordeon ****************/
+	$('#acordion ul li div').mouseover(function(){
+    	$(this).find('p.zona_title').css('background', '#fff');
+	});
+	$('#acordion ul li div').mouseout(function(){
+    	$(this).find('p.zona_title').css('background', 'url(/archivos/imagen/fondo_menu_titulo.png)');
+	});
+	/******************************************************/
+
     lastBlock = $('#a8');
     maxWidth = 418;
     minWidth = 134;
