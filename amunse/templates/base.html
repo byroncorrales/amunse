@@ -13,10 +13,13 @@
 $(document).ready(function(){
 	/************** mouseover del acordeon ****************/
 	$('#acordion ul li div').mouseover(function(){
-    	$(this).find('p.zona_title').css('background', '#fff');
+    	$(this).find('p.zona_title').css('border-bottom', '#fde17b 1px solid');
+        $(this).find('p.zona_title').css('background', 'url(/archivos/imagen/fondo_menu_titulo2.png)');
 	});
 	$('#acordion ul li div').mouseout(function(){
-    	$(this).find('p.zona_title').css('background', 'url(/archivos/imagen/fondo_menu_titulo.png)');
+    	$(this).find('p.zona_title').css('border-bottom', '#e1e1dc 1px solid');
+        $(this).find('p.zona_title').css('background', 'url(/archivos/imagen/fondo_menu_titulo.png)');
+
 	});
 	/******************************************************/
 
