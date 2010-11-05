@@ -267,7 +267,6 @@ b{
     padding-left:30px;
     height:24px;
     width:170px;
-    *width:200px;
     border:0;
     background-image:url(../imagen/buscar.png);
     color:#525252;
@@ -329,10 +328,12 @@ b{
 #inicio_izq{
     width:333px;
     margin-right:10px;
+    #margin-right:0px;
 }
 
 #inicio_der{
     width:395px;
+
 }
 
 .contenedor_noticia_inicio{
@@ -474,6 +475,7 @@ b{
 
 #menu_sidebar{
     background:#5b5b51;
+    #position: relative;
 }
 
 #menu_sidebar h2{
@@ -492,6 +494,7 @@ b{
 #menu_sidebar a, #menu_sidebar a:visited{
     display:block;
     height:24px;
+    #height:34px;
     border-top:#68685e 1px solid;
     text-decoration:none;
     color:#b2b4b1;
@@ -501,6 +504,7 @@ b{
     text-shadow: 0px -1px 0px #37461c;
     -moz-text-shadow: 0px -1px 0px #37461c;
     -webkit-text-shadow: 0px -1px 0px #37461c;
+    #position: relative;
 }
 
 #menu_sidebar a:hover{
@@ -512,6 +516,7 @@ b{
     float:right;
     margin-top:-10px;
     margin-left:10px;
+    #position: relative;
 }
 
 #contacto_sidebar{
@@ -697,6 +702,7 @@ width:250px;
     background:#fff url(../imagen/acciones.png);
     background-repeat:no-repeat;
     width:293px;
+    *width:310px;
     height:27px;
     margin-top:-5px;
     margin-bottom:10px;
@@ -717,6 +723,7 @@ width:150px;
 background: #fff url(../imagen/acciones_combo.png);
 background-repeat:repeat-x;
 border:0;
+
     border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
@@ -727,6 +734,7 @@ background:#5C8137;
 color:#fff;
 border:0;
 padding:3px;
+*padding:0px;
 margin-left:4px;
     border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
@@ -1001,6 +1009,7 @@ margin-left:45px;
 .icon_carpeta img{
     padding:0px;
     background:none;
+    #float:left;
 }
 
 .icon_carpeta{
