@@ -1,11 +1,33 @@
  {%extends "interna.html"%}
  {%block title%}Proyectos{%endblock%}
  {%block extra_header%}
+ <script type="text/javascript">
+    function mandacategoria(form){
+        var area_slug = form.area.value;
+            if (area_slug){
+                var url="/proyectos/area/" + area_slug;
+            }else
+            {
+                var url="/proyectos/";
+            }
+        window.location = url;
+    }
+</script>
  {%endblock%}
 
     {%block cuerpo%}
-        <h2>Proyectos de area {{area.nombre}}</h2>
-        
+        <h2>Proyectos de area {{area_sel.nombre}}</h2>
+        <div id="acciones">
+            <form name="formulario" action="" method="get">
+                        <div class="label">Areas </div>
+                        <select id="id_categoria" name="area" >  
+                            <option value="">-------</option>
+                            {%for area in area%}
+                            <option value="{{area.slug}}">{{area.nombre}}</option>
+                            {%endfor%}
+                        <input id="id_boton" type="button" value="Filtrar" onClick="mandacategoria(this.form)"/>
+            </form>
+        </div>
         <div class="lista">
             <br>
             {%for proyecto in proyectos.object_list%}
@@ -13,7 +35,7 @@
                     <div class="titulo"><a href="/proyectos/{{proyecto.slug}}">{{proyecto.nombre}}</a></div>
                     <div class="categoria_noticia der">
                     <b>Area:</b> 
-                    <i>{{area.nombre}}</i>
+                    <i>{{area_sel.nombre}}</i>
                     </div>
                     <div class="separador"></div>
             </div>
