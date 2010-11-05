@@ -10,7 +10,7 @@ from models import *
 def index(request):
     '''Vista general de los eventos'''
     evento_list = Evento.objects.all().order_by('-fecha_inicio')
-    paginator = Paginator(evento_list, 4)
+    paginator = Paginator(evento_list, 10)
 
     try:
         page = int(request.GET.get('page', '1'))
