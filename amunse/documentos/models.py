@@ -7,7 +7,9 @@ from tagging_autocomplete.models import TagAutocompleteField
 from customfilefield import ContentTypeRestrictedFileField
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
 from south.modelsinspector import add_introspection_rules
-add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"]) 
+add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"])
+import uuid
+import os 
 
 # modelos para la administracion de archivos 
 
@@ -54,17 +56,22 @@ class SubCategoriaDocumento(models.Model):
         conteo = Archivo.objects.filter(subcategoria__id = self.id).count()
         return "%s" % str(conteo)
 
-class Archivo(models.Model):
-    '''Modelo que representa los archivos que seran subidos a la seccion de documentacion'''
+class Archivo(models.Model):    
+    def get_file_path(instance, filename):
+        ext = filename.split('.')[-1]
+        filename = "%s.%s" % (uuid.uuid4(), ext)
+        return os.path.join('attachments/documentos', filename)
+    
+	'''Modelo que representa los archivos que seran subidos a la seccion de documentacion'''
     nombre = models.CharField(max_length = 200)
     fecha = models.DateField()
     descripcion = models.TextField(blank = True, null = True)
 #    adjunto = models.FileField(upload_to = 'attachments/documentos')
-    adjunto = ContentTypeRestrictedFileField(upload_to = 'attachments/documentos', content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
+    adjunto = ContentTypeRestrictedFileField(upload_to = get_file_path, content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
     subcategoria = models.ForeignKey(SubCategoriaDocumento) 
     slug = models.SlugField(max_length = 25, unique = True, help_text = 'unico Valor',editable=False)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
-
+	
     def get_absolute_url(self):
         return '%s%s/%s' % (settings.MEDIA_URL, 
                          settings.ATTACHMENT_FOLDER, self.id)

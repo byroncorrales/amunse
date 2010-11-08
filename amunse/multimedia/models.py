@@ -33,3 +33,5 @@ class ImagenAdjunta(models.Model):
     imagen = models.ImageField(upload_to='attachments/imagenes')
 
 
+
+
