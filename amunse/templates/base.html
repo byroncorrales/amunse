@@ -39,12 +39,14 @@ $(document).ready(function(){
   <!-- Comienza el header -->
   <div id="barra_superior" >
     <div id="contenedor_barra_superior" class="centro">
-        <a href="/"><img src="{{MEDIA_URL}}/imagen/titulo.jpg"></a>
+        <a href="/"><img  src="{{MEDIA_URL}}/imagen/titulo.jpg"></a>
+     
         <form action="/busqueda/" method="get">
             <div>
                  <input type="text" name="q" id="busqueda" value=""/>
             </div>
         </form>
+           <a href="/noticias/feed"><img id="rss" src="{{MEDIA_URL}}imagen/rss.jpg"></a>
     </div>
   </div>
   {%cache 900 menu%}

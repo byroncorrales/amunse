@@ -39,7 +39,8 @@ def proyecto_lista(request):
 def proyecto_lista_area(request,area_slug):
     '''Filtra la lista de noticias por una categoria especifica'''
     proyecto_lista = Proyecto.objects.filter(area__slug=area_slug).order_by('-id')
-    area = Area.objects.get(slug=area_slug)
+    area_sel = Area.objects.get(slug=area_slug)
+    area = Area.objects.all()
     paginator = Paginator(proyecto_lista, 5)
 
     try:
@@ -52,6 +53,6 @@ def proyecto_lista_area(request,area_slug):
     except (EmptyPage, InvalidPage):
         proyecto = paginator.page(paginator.num_pages)
 
-    dicc = {'proyectos': proyecto,'area':area,
+    dicc = {'proyectos': proyecto,'area':area,'area_sel':area_sel
            }
     return direct_to_template(request, 'proyectos/proyectos_lista_area.html',dicc)

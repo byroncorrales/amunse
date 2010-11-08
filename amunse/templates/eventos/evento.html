@@ -24,6 +24,15 @@
                         {%endfor%}
                 </div>
                 {%endif%}
+                <br>
+                <div id="etiquetas" class="">
+                    {% if evento.tags %}
+                        <b>Etiquetas: </b><br>
+                        {% for tag in evento.get_tags %}
+                        <a href="/tags/{{tag.id}}">{{tag}}</a>
+                        {% endfor %}
+                    {%endif%}
+                </div>
            </div>
        </div>
 {%endblock %}
