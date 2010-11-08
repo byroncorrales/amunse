@@ -8,6 +8,7 @@ from tagging.models import Tag
 from thumbs import ImageWithThumbsField
 from tagging_autocomplete.models import TagAutocompleteField
 from customfilefield import ContentTypeRestrictedFileField
+from amunse.utils import *
 
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
 from south.modelsinspector import add_introspection_rules
@@ -18,12 +19,14 @@ class Boletin(models.Model):
     titulo = models.CharField('Título', max_length = 120, unique = True,blank = False, null = False)
     slug = models.SlugField(max_length = 120, unique = True,help_text = 'unico Valor',editable=False)
     fecha = models.DateField('Fecha',blank = False, null = False)
-    imagen = ImageWithThumbsField('Imagen portada',upload_to='attachments/imagenes', sizes=((80,100),(190,230)), help_text="Imágen de portada")
-    boletin = ContentTypeRestrictedFileField(upload_to = 'attachments/boletines', content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
+    imagen = ImageWithThumbsField('Imagen portada',upload_to=get_image_path, sizes=((80,100),(190,230)), help_text="Imágen de portada")
+    boletin = ContentTypeRestrictedFileField(upload_to = get_file_path, content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
     edicion = models.IntegerField('Número de edición',blank = True, null = True)
     descripcion = models.TextField('Descripción',blank = True, null = True)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 
+    imgDir = 'attachments/imagenes'
+    fileDir = 'attachments/documentos'
     def __unicode__(self):
         return self.titulo
 

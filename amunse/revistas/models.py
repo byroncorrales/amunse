@@ -9,6 +9,8 @@ from thumbs import ImageWithThumbsField
 from tagging_autocomplete.models import TagAutocompleteField
 from customfilefield import ContentTypeRestrictedFileField
 
+from amunse.utils import get_file_path, get_image_path
+
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
 from south.modelsinspector import add_introspection_rules
 add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"]) 
@@ -19,10 +21,14 @@ class Revista(models.Model):
     slug = models.SlugField(max_length = 120, unique = True,help_text = 'unico Valor',editable=False)
     fecha = models.DateField('Fecha',blank = False, null = False)
     edicion = models.IntegerField('Número de edición',blank = True, null = True)
-    imagen = ImageWithThumbsField('Imagen portada',upload_to='attachments/imagenes', sizes=((80,100),(190,230)), help_text="Imágen de portada")
-    revista = ContentTypeRestrictedFileField(verbose_name='Revista adjunto', upload_to = 'attachments/revistas', content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
+    imagen = ImageWithThumbsField('Imagen portada',upload_to=get_image_path, sizes=((80,100),(190,230)), help_text="Imágen de portada")
+    revista = ContentTypeRestrictedFileField(verbose_name='Revista adjunto', upload_to = get_file_path, content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
     descripcion = models.TextField('Descripción',blank = True, null = True)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
+
+    #variables para establecer los directorios
+    imgDir = 'attachments/imagenes'   
+    fileDir = 'attachments/documentos'
 
     def __unicode__(self):
         return self.titulo

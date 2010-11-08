@@ -8,8 +8,7 @@ from customfilefield import ContentTypeRestrictedFileField
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
 from south.modelsinspector import add_introspection_rules
 add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"])
-import uuid
-import os 
+from amunse.utils import get_file_path
 
 # modelos para la administracion de archivos 
 
@@ -56,13 +55,8 @@ class SubCategoriaDocumento(models.Model):
         conteo = Archivo.objects.filter(subcategoria__id = self.id).count()
         return "%s" % str(conteo)
 
-class Archivo(models.Model):    
-    def get_file_path(instance, filename):
-        ext = filename.split('.')[-1]
-        filename = "%s.%s" % (uuid.uuid4(), ext)
-        return os.path.join('attachments/documentos', filename)
-    
-	'''Modelo que representa los archivos que seran subidos a la seccion de documentacion'''
+class Archivo(models.Model):
+    '''Modelo que representa los archivos que seran subidos a la seccion de documentacion'''
     nombre = models.CharField(max_length = 200)
     fecha = models.DateField()
     descripcion = models.TextField(blank = True, null = True)
@@ -72,6 +66,8 @@ class Archivo(models.Model):
     slug = models.SlugField(max_length = 25, unique = True, help_text = 'unico Valor',editable=False)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 	
+    fileDir = 'attachments/documentos'
+    
     def get_absolute_url(self):
         return '%s%s/%s' % (settings.MEDIA_URL, 
                          settings.ATTACHMENT_FOLDER, self.id)
