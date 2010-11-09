@@ -61,7 +61,7 @@ class Archivo(models.Model):
     fecha = models.DateField()
     descripcion = models.TextField(blank = True, null = True)
 #    adjunto = models.FileField(upload_to = 'attachments/documentos')
-    adjunto = ContentTypeRestrictedFileField(upload_to = get_file_path, content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
+    adjunto = ContentTypeRestrictedFileField(upload_to = get_file_path, content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation','image/jpeg','image/png'],max_upload_size=12582912, help_text='Solo se permiten archivos .jpg .png .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
     subcategoria = models.ForeignKey(SubCategoriaDocumento) 
     slug = models.SlugField(max_length = 25, unique = True, help_text = 'unico Valor',editable=False)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
