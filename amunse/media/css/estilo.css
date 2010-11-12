@@ -1082,7 +1082,8 @@ display:block;
     color:#000;
 }
 
-#rss{float:right;margin-left:260px;}
+#rss{float:right;margin-left:10px;}
+#boton_contacto{float:right;margin-left:140px;}
 /* Termina Contenido*/
 
 /* Comienza Footer */
