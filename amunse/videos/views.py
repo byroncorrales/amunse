@@ -8,7 +8,7 @@ from models import *
 
 def index(request):
     '''vista de indice lista de videos paginados'''
-    video_list = Video.objects.all()
+    video_list = Video.objects.all().order_by('-fecha','-id')
     paginator = Paginator(video_list, 3)
 
     try:
