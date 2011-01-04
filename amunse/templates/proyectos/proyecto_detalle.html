@@ -27,7 +27,7 @@
                 <tr>
                     <td style="vertical-align: top;"><b>Estado</b><br>
                     </td>
-                    <td style="vertical-align: top;">{%if proyecto.estado = 0 %}En Desarrollo {%else%} Terminado{%endif%}<br>
+                    <td style="vertical-align: top;">{%if proyecto.estado = 1 %}En Desarrollo {%endif%} {%if proyecto.estado = 2 %}Terminado {%endif%}{%if proyecto.estado = 3 %}Gestión{%endif%}<br>
                     </td>
                 </tr>
                 <tr>
