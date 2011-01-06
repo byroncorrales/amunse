@@ -68,6 +68,7 @@ INSTALLED_APPS = (
     'amunse.paginas',
     'amunse.municipios',
     'amunse.proyectos',
+    'amunse.galerias',
     'haystack',
 )
 # :)
