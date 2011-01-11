@@ -27,6 +27,14 @@ class Galeria(models.Model):
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.titulo)
         super(Galeria, self).save(force_insert, force_update)
+    
+    def preview(self):
+        preview = ImagenAdjunta.objects.filter(galeria__pk=self.pk)[:1]
+        return preview
+    
+    def conteo(self):
+        conteo = ImagenAdjunta.objects.filter(galeria__id = self.id).count()
+        return "%s" % str(conteo)
 
 class ImagenAdjunta(models.Model):
     titulo = models.CharField(max_length = 160)
