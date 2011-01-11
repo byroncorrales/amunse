@@ -1,0 +1,67 @@
+{%extends "interna.html"%}
+{%block extra_header%}
+<link href="{{MEDIA_URL}}css/highslide.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="{{MEDIA_URL}}js/highslide-with-gallery.js"></script>
+<!--[if lt IE 7]>
+<link href="{{MEDIA_URL}}css/highslide-IE6.css" rel="stylesheet" type="text/css" media="screen" />
+<![endif]-->
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.gal_preview').fadeTo("fast", 0.7);
+    $('.gal_preview').hover(function(){
+      $(this).fadeTo('slow', 1.0);
+    },function(){
+      $(this).fadeTo("slow", 0.7);
+    });
+});
+</script>
+
+<script type="text/javascript">
+hs.graphicsDir = '{{MEDIA_URL}}imagen/graphics/';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.fadeInOut = true;
+hs.dimmingOpacity = 0.8;
+hs.outlineType = 'rounded-white';
+hs.captionEval = 'this.thumb.alt';
+hs.marginBottom = 105; // make room for the thumbstrip and the controls
+hs.numberPosition = 'caption';
+hs.showCredits = false;
+
+// Add the slideshow providing the controlbar and the thumbstrip
+hs.addSlideshow({
+	//slideshowGroup: 'group1',
+	interval: 5000,
+	repeat: false,
+	useControls: true,
+	overlayOptions: {
+		className: 'text-controls',
+		position: 'bottom center',
+		relativeTo: 'viewport',
+		offsetY: -60
+	},
+	thumbstrip: {
+		position: 'bottom center',
+		mode: 'horizontal',
+		relativeTo: 'viewport'
+	}
+});
+</script>
+{%endblock%}
+{%block title%}{{galeria.titulo}}{%endblock%}
+{%block cuerpo%}
+    <h2>{{galeria.titulo}}</h2>
+    <div id="lista">
+
+        {%for foto in fotos%}
+        
+        <div class="fotos highslide-gallery" >
+            <a class='highslide' href='{{foto.imagen.url_640x480}}' onclick="return hs.expand(this)">
+            <img src="{{foto.imagen.url_135x100}}" class="gal_preview" alt='<br>{{foto.titulo}} <span style="float:right; font-size:11px"><a style="color:#333;" href="{{foto.imagen.url}}">Descargar tamano completo</a></span>'>
+            <div class="highslide-caption">asfs a</div>
+            </a><b>{{foto.titulo}}<br></b>
+        </div>
+
+        {%endfor%}
+     </div>
+{%endblock %}

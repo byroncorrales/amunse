@@ -1,0 +1,32 @@
+{%extends "interna.html"%}
+{%block extra_header%}
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.gal_preview').fadeTo("fast", 0.7);
+    $('.gal_preview').hover(function(){
+      $(this).fadeTo('slow', 1.0);
+    },function(){
+      $(this).fadeTo("slow", 0.7);
+    });
+});
+</script>
+{%endblock%}
+{%block title%}{{tipo}}{%endblock%}
+{%block cuerpo%}
+    <h2>{{tipo}}</h2>
+    <div id="lista">
+        {%for galeria in galeria_lista%}
+        
+        <div class="galeria">
+        <a href="/galerias/tipo/{{galeria.tipo}}/{{galeria.slug}}">
+            {%for foto in galeria.preview%}
+            <img src="{{foto.imagen.url_180x135}}" class="gal_preview">
+            {%endfor%}
+            <b>{{galeria.titulo}}<br></b>
+            <small>imágenes({{galeria.conteo}})</small>
+                </a>
+        </div>
+
+        {%endfor%}
+     </div>
+{%endblock %}
