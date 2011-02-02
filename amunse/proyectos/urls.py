@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from models import Proyecto
+from feeds import ProyectoFeed
 
 urlpatterns = patterns('proyectos.views',
     (r'^proyectos/feed/$', ProyectoFeed()),
