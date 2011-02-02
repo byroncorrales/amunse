@@ -100,7 +100,7 @@ class Archivo(models.Model):
 
     #metodo url del objeto
     def get_full_url(self):
-        return "/documentos/%s/" % self.slug
+        return "/documentos/%s/%s/%s" % (self.subcategoria.categoria, self.subcategoria, self.slug)
 
     #metodo para obtener el nombre del objeto
     def get_name(self):
