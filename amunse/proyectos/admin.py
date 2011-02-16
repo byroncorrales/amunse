@@ -23,7 +23,7 @@ class ProyectoAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ['nombre','monto','lugar']}),
         ('Periodo', {'fields': [('fecha_inicio','fecha_final')]}),
-        (None, {'fields': ['estado','area','financiador','objetivos','resultados']}),
+        (None, {'fields': ['estado','area','financiador','objetivos','resultados','tags']}),
     ]
     
     class Media:

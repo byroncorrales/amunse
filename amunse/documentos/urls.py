@@ -1,9 +1,10 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from models import Archivo, CategoriaDocumento, SubCategoriaDocumento 
-from feeds import DocumentosFeed
+from feeds import DocumentosFeed, DocumentosBinacionalFeed
 
 urlpatterns = patterns('documentos.views',
+    (r'^documentos/binacional/feed/$', DocumentosBinacionalFeed()),
     (r'^documentos/feed/$', DocumentosFeed()),
     (r'^documentos/$', 'categoria_lista'),
     (r'^documentos/(?P<slug_cat>[-\w]+)/$', 'subcategoria_lista'),

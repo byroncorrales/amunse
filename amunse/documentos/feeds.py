@@ -1,5 +1,8 @@
 from django.contrib.syndication.views import Feed
 from models import Archivo
+from amunse.tagging.models import Tag, TaggedItem
+from django.shortcuts import get_list_or_404
+from django.shortcuts import get_object_or_404
 
 class DocumentosFeed(Feed):
     title = "Documentos de AMUNSE"
@@ -17,3 +20,22 @@ class DocumentosFeed(Feed):
 
     def item_link(self, item):
         return item.get_full_url()
+
+class DocumentosBinacionalFeed(Feed):
+    title = "Documentos de AMUNSE"
+    link = "/documentos/binacional/feed/"
+    description = 'Documentos mas recientes de AMUNSE'
+    
+    def items(self):
+        tag = get_object_or_404(Tag, name="Binacional")
+        #return Noticia.objects.filter(tags.id=tag.id)order_by('-fecha')[:10]
+        return TaggedItem.objects.filter(content_type__name='archivo', tag=tag)
+
+    def item_title(self, item):
+        return item.object.nombre
+
+    def item_description(self, item):
+        return item.object.descripcion
+
+    def item_link(self, item):
+        return item.object.get_full_url()

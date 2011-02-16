@@ -49,6 +49,7 @@ class Noticia(models.Model):
     class Meta:
         verbose_name = "Noticia"
         verbose_name_plural = "Noticias"
+        ordering = ['-fecha']
     
     def save(self, force_insert=False, force_update=False):
         try:

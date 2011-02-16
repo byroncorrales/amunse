@@ -7,7 +7,7 @@ from tagging_autocomplete.models import TagAutocompleteField
 from customfilefield import ContentTypeRestrictedFileField
 # Regla para que funcionen las migraciones de south con los campos de django-tagging
 from south.modelsinspector import add_introspection_rules
-add_introspection_rules = ([], ["^tagging_autocomplete\.models\.TagAutocompleteField"])
+add_introspection_rules([], ["^tagging_autocomplete\.models\.TagAutocompleteField"])
 from amunse.utils import get_file_path
 
 # modelos para la administracion de archivos 
@@ -79,6 +79,7 @@ class Archivo(models.Model):
 
     class Meta:
         verbose_name_plural = "Subir Archivos"
+        #ordering = ['-fecha']
         
     def categoria(self):
         return self.subcategoria.categoria.nombre
