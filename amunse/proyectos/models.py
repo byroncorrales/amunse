@@ -70,6 +70,7 @@ class Proyecto(models.Model):
     class Meta:
         verbose_name = "Proyecto"
         verbose_name_plural = "Proyectos"
+        ordering = ['-id']
     
     def save(self, force_insert=False, force_update=False):
         self.slug = slugify(self.nombre)

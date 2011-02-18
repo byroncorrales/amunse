@@ -31,17 +31,17 @@ class NoticiasBinacionalFeed(Feed):
     
     def items(self):
         tag = get_object_or_404(Tag, name="Binacional")
-        #return Noticia.objects.filter(tags.id=tag.id)order_by('-fecha')[:10]
-        return TaggedItem.objects.filter(content_type__name='Noticia', tag=tag)
+        #return Noticia.objects.filter(tags=tag).order_by('-fecha')[:10]
+        return TaggedItem.objects.get_by_model(Noticia, tag)[:10]
 
     def item_title(self, item):
-        return item.object.titulo
+        return item.titulo
 
     def item_description(self, item):
-        return item.object.contenido
+        return item.contenido
 
     def item_author_name(self, item):
-        return item.object.autor 
+        return item.autor 
 
     def item_link(self, item):
-        return item.object.get_full_url()
+        return item.get_full_url()

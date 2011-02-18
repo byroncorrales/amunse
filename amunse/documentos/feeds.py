@@ -29,13 +29,14 @@ class DocumentosBinacionalFeed(Feed):
     def items(self):
         tag = get_object_or_404(Tag, name="Binacional")
         #return Noticia.objects.filter(tags.id=tag.id)order_by('-fecha')[:10]
-        return TaggedItem.objects.filter(content_type__name='archivo', tag=tag)
+        #return TaggedItem.objects.filter(content_type__name='archivo', tag=tag)
+        return TaggedItem.objects.get_by_model(Archivo, tag)[:10]
 
     def item_title(self, item):
-        return item.object.nombre
+        return item.nombre
 
     def item_description(self, item):
-        return item.object.descripcion
+        return item.descripcion
 
     def item_link(self, item):
-        return item.object.get_full_url()
+        return item.get_full_url()
