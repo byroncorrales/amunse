@@ -15,7 +15,7 @@ class SubCategoriaAdmin(admin.ModelAdmin):
     
 class ArchivoAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'fecha', 'subcategoria','categoria']
-    list_filter = ['nombre', 'subcategoria']
+    list_filter = ['subcategoria']
     search_fields = ['nombre']
     list_per_page = 12
 
