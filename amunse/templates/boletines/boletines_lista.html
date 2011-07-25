@@ -18,13 +18,13 @@
            {%endfor%}
            <div class="paginacion">
                <span class="pagina-links">
-                   {%if eventos.has_previous%}
+                   {%if boletines.has_previous%}
                    <a href="?page={{ boletines.previous_page_number }}" class="pag_izq">anterior</a>
                    {%endif%}
                    <span class="actual">
-                       Página {{ eventos.number }} de {{ eventos.paginator.num_pages }}.
+                       Página {{ boletines.number }} de {{ boletines.paginator.num_pages }}.
                    </span>
-                   {%if eventos.has_next%}
+                   {%if boletines.has_next%}
                    <a href="?page={{ boletines.next_page_number }}" class="pag_der">siguiente</a>
                    {%endif%}
                </span>
