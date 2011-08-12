@@ -50,4 +50,4 @@ class ContentTypeRestrictedFileField(FileField):
             raise forms.ValidationError(_('Archivo no soportado.'))
 
 from south.modelsinspector import add_introspection_rules
-add_introspection_rules([], ["^documentos\.customfilefield\.ContentTypeRestrictedFileField"])
+add_introspection_rules([], ["^amunse\.documentos\.customfilefield\.ContentTypeRestrictedFileField"])
