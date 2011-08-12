@@ -84,12 +84,23 @@ class Archivo(models.Model):
     def categoria(self):
         return self.subcategoria.categoria.nombre
     
-    def save(self, force_insert=False, force_update=False):
+    #check if slug exists in DB
+    def _exists(self, slug):
         try:
-            Archivo.objects.get(pk=self.id)
+            foo = Archivo.objects.get(slug=slug)
+            return True
         except:
+            return False
+    
+    def save(self, force_insert=False, force_update=False):
+        if not self.id:
             n = Archivo.objects.all().count()
-            self.slug = str(n) + '-' + slugify(self.nombre)
+            foo = '%s-%s' % (str(n), slugify(self.nombre))
+            if len(foo) > 48:
+                if not self._exists(foo[:48]):
+                    self.slug = foo[:48]
+                else:
+                    self.slug = '%s-' % foo[:48]
         super(Archivo, self).save(force_insert, force_update)
 
     #Para jalar las tags
