@@ -63,7 +63,7 @@ class Archivo(models.Model):
 #    adjunto = models.FileField(upload_to = 'attachments/documentos')
     adjunto = ContentTypeRestrictedFileField(upload_to = get_file_path, content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation','image/jpeg','image/png'],max_upload_size=12582912, help_text='Solo se permiten archivos .jpg .png .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
     subcategoria = models.ForeignKey(SubCategoriaDocumento) 
-    slug = models.SlugField(max_length = 50, unique = True, help_text = 'unico Valor',editable=False)
+  #  slug = models.SlugField(max_length = 50, unique=True, help_text = 'unico Valor')
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 	
     fileDir = 'attachments/documentos'
@@ -85,23 +85,23 @@ class Archivo(models.Model):
         return self.subcategoria.categoria.nombre
     
     #check if slug exists in DB
-    def _exists(self, slug):
-        try:
-            foo = Archivo.objects.get(slug=slug)
-            return True
-        except:
-            return False
+    # def _exists(self, slug):
+    #     try:
+    #         foo = Archivo.objects.get(slug=slug)
+    #         return True
+    #     except:
+    #         return False
     
-    def save(self, force_insert=False, force_update=False):
-        if not self.id:
-            n = Archivo.objects.all().count()
-            foo = '%s-%s' % (str(n), slugify(self.nombre))
-            if len(foo) > 48:
-                if not self._exists(foo[:48]):
-                    self.slug = foo[:48]
-                else:
-                    self.slug = '%s-' % foo[:48]
-        super(Archivo, self).save(force_insert, force_update)
+    # def save(self, force_insert=False, force_update=False):
+    #     if not self.id:
+    #         n = Archivo.objects.all().count()
+    #         foo = '%s-%s' % (str(n), slugify(self.nombre))
+    #         if len(foo) > 48:
+    #             if not self._exists(foo[:48]):
+    #                 self.slug = foo[:48]
+    #             else:
+    #                 self.slug = '%s-' % foo[:48]
+    #     super(Archivo, self).save(force_insert, force_update)
 
     #Para jalar las tags
     def set_tags(self, tags):

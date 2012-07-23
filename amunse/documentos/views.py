@@ -45,7 +45,7 @@ def archivo_lista(request,slug_cat, slug_subcat):
 
 def archivo_detalle(request,slug_cat, slug_subcat, archivo_slug):
     '''Muestra el detalle de los documentos'''
-    archivo = get_object_or_404(Archivo,slug=archivo_slug)
+    archivo = get_object_or_404(Archivo,pk=archivo_slug)
     subcategoria = get_object_or_404(SubCategoriaDocumento, slug=slug_subcat)
 
     dicc = {'archivo': archivo, 'subcategoria':subcategoria,
