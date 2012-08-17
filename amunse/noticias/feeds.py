@@ -30,7 +30,7 @@ class NoticiasBinacionalFeed(Feed):
     description = 'Noticias mas recientes de AMUNSE'
     
     def items(self):
-        tag = get_object_or_404(Tag, name="Binacional")
+        tag = get_object_or_404(Tag, name="binacional")
         #return Noticia.objects.filter(tags=tag).order_by('-fecha')[:10]
         return TaggedItem.objects.get_by_model(Noticia, tag)[:10]
 

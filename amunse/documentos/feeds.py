@@ -27,7 +27,7 @@ class DocumentosBinacionalFeed(Feed):
     description = 'Documentos mas recientes de AMUNSE'
     
     def items(self):
-        tag = get_object_or_404(Tag, name="Binacional")
+        tag = get_object_or_404(Tag, name="binacional")
         #return Noticia.objects.filter(tags.id=tag.id)order_by('-fecha')[:10]
         #return TaggedItem.objects.filter(content_type__name='archivo', tag=tag)
         return TaggedItem.objects.get_by_model(Archivo, tag)[:10]

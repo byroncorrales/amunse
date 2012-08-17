@@ -27,7 +27,7 @@ class ProyectoBinacionalFeed(Feed):
     description = 'Proyectos de AMUNSE'
     
     def items(self):
-        tag = get_object_or_404(Tag, name="Binacional")
+        tag = get_object_or_404(Tag, name="binacional")
         #return Proyecto.objects.all()[:10]
         return TaggedItem.objects.get_by_model(Proyecto, tag)
 
