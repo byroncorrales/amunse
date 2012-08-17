@@ -57,6 +57,9 @@
             <a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a>
             <p>{{noticia.contenido|truncatewords_html:15|safe}}</p>
         </div>
+        {%if forloop.counter == 2%}
+            <div style="clear:both"></div>
+        {%endif%}
         {%endfor%}
         <div class="enlaces_inicio">
             <a class="con_flechita" href="/noticias">Todas las noticias</a>
