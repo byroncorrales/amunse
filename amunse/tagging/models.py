@@ -16,14 +16,16 @@ from django.utils.translation import ugettext_lazy as _
 from tagging import settings
 from tagging.utils import calculate_cloud, get_tag_list, get_queryset_and_model, parse_tag_input
 from tagging.utils import LOGARITHMIC
-
+from django.db.models import Manager
 qn = connection.ops.quote_name
 
 ############
 # Managers #
 ############
 
+
 class TagManager(models.Manager):
+
     def update_tags(self, obj, tag_names):
         """
         Update tags associated with an object.
@@ -482,7 +484,7 @@ class TaggedItem(models.Model):
 
     class Meta:
         # Enforce unique tag association per object
-        unique_together = (('tag', 'content_type', 'object_id'),)
+        #unique_together = (('tag', 'content_type', 'object_id'),)
         verbose_name = _('objeto etiqueta')
         verbose_name_plural = _('objetos etiqueta')
 
